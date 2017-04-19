@@ -1,0 +1,124 @@
+{
+  "about": {
+    "title": "Sobre"
+  },
+  "404": {
+    "title": "Página 404",
+    "subtitle": "Algo ha ido mal...",
+    "backText": "Vuelve a página de inicio"
+  },
+  "messages": {
+    "leftingCreateSuccess": "Dejada creado con éxito!",
+    "leftingEditSuccess": "Dejada editado con éxito!",
+    "userCreateSuccess": "Usuario creado con éxito!",
+    "userEditSuccess": "Usuario editado con éxito!"
+  },
+  "users": {
+    "edit": {
+      "title": "Editar usuario",
+      "form": {
+        "label": {
+          "username": "Usuario",
+          "email": "E-mail",
+          "location": "Locación",
+          "interests": "Intereses"
+        },
+        "saveButton": "Guardar cambios"
+      }
+    },
+    "profile": {
+      "title": "Perfil de usuario",
+      "label": {
+        "interests": "Intereses",
+        "created": "Creado"
+      },
+      "editButton": "Editar mi perfil"
+    },
+    "list": {
+      "title": "Listado de usuarios"
+    }
+  },
+  "leftings": {
+    "create": {
+      "title": "Dejada nuevo",
+      "buttonText": "Crear dejada"
+    },
+    "edit": {
+      "title": "Editar dejada",
+      "buttonText": "Editar",
+      "form": {
+        "label": {
+          "title": "Título de dejada",
+          "headline": "Headline de dejada",
+          "description": "Descripción de dejada",
+          "date": "Fecha de dejada"
+        }
+      }
+    },
+    "profile": {
+      "title": "Perfil de dejada",
+      "label": {
+        "title": "Título",
+        "headline": "Headline",
+        "description": "Descripción",
+        "date": "Fecha de dejada",
+        "created": "Creado"
+      }
+    },
+    "list": {
+      "title": "Listado de dejadas",
+      "createNew": "Crea un dejada nuevo"
+    }
+  },
+  "login": {
+    "title": "Area de Login",
+    "form": {
+      "label": {
+        "identifier": "Usuario / Email",
+        "password": "Contraseña"
+      },
+      "error": {
+        "name": "Ya existe usuario con este nombre:"
+      },
+      "button": "Login",
+      "signUpText": "Aún no tienes cuenta? Inscribete!"
+    }
+  },
+  "signup": {
+    "title": "Inscripcion",
+    "form": {
+      "label": {
+        "username": "Nombre de usuario",
+        "email": "E-mail",
+        "password": "Contraseña",
+        "repeatPassword": "Repite contraseña"
+      },
+      "button": "Inscribete!"
+    }
+  },
+  "navigation": {
+    "user": {
+      "login": "Login",
+      "logout": "Logout",
+      "signup": "Signup",
+      "myProfile": "Mi perfil"
+    },
+    "content": {
+      "leftings": "Dejadas",
+      "users": "Usuarios",
+      "about": "Sobre"
+    }
+  },
+  "interests": {
+    "animals": "Animales",
+    "environment": "Medio ambiente",
+    "children": "Niños",
+    "poverty": "Pobreza",
+    "empowerment": "Refuerzo"
+  },
+  "social": {
+    "fb": "Facebook",
+    "tw": "Twitter",
+    "in": "Instagram"
+  }
+}

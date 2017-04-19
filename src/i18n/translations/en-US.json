@@ -1,0 +1,124 @@
+{
+  "about": {
+    "title": "About"
+  },
+  "404": {
+    "title": "404 Page",
+    "subtitle": "Something went wrong...",
+    "backText": "Go back to the home page"
+  },
+  "messages": {
+    "leftingCreateSuccess": "Lefting succesfully created!",
+    "leftingEditSuccess": "Lefting succesfully edited!",
+    "userCreateSuccess": "User succesfully created!",
+    "userEditSuccess": "User succesfully edited!"
+  },
+  "users": {
+    "edit": {
+      "title": "Edit user",
+      "form": {
+        "label": {
+          "username": "Username",
+          "email": "E-mail",
+          "location": "Location",
+          "interests": "Interests"
+        },
+        "saveButton": "Save Changes"
+      }
+    },
+    "profile": {
+      "title": "User Profile",
+      "label": {
+        "interests": "Interests",
+        "created": "Created"
+      },
+      "editButton": "Edit my profile"
+    },
+    "list": {
+      "title": "Users list"
+    }
+  },
+  "leftings": {
+    "create": {
+      "title": "New lefting",
+      "buttonText": "Create lefting"
+    },
+    "edit": {
+      "title": "Edit Lefting",
+      "buttonText": "Edit lefting",
+      "form": {
+        "label": {
+          "title": "Lefting title",
+          "headline": "Lefting headline",
+          "description": "Lefting description",
+          "date": "Lefting date"
+        }
+      }
+    },
+    "profile": {
+      "title": "Lefting Profile",
+      "label": {
+        "title": "Title",
+        "headline": "Headline",
+        "description": "Description",
+        "date": "Lefting date",
+        "created": "Created"
+      }
+    },
+    "list": {
+      "title": "Leftings list",
+      "createNew": "Create new lefting"
+    }
+  },
+  "login": {
+    "title": "Login Area",
+    "form": {
+      "label": {
+        "identifier": "Username / Email",
+        "password": "Password"
+      },
+      "error": {
+        "name": "There is already a user with name:"
+      },
+      "button": "Login",
+      "signUpText": "Don't have account? Sign up!"
+    }
+  },
+  "signup": {
+    "title": "SignUp Area",
+    "form": {
+      "label": {
+        "username": "Username",
+        "email": "E-mail",
+        "password": "Password",
+        "repeatPassword": "Repeat password"
+      },
+      "button": "Sign up!"
+    }
+  },
+  "navigation": {
+    "user": {
+      "login": "Login",
+      "logout": "Logout",
+      "signup": "Signup",
+      "myProfile": "My Profile"
+    },
+    "content": {
+      "leftings": "Leftings",
+      "users": "Users",
+      "about": "About"
+    }
+  },
+  "interests": {
+    "animals": "Animals",
+    "environment": "Environment",
+    "children": "Children",
+    "poverty": "Poverty",
+    "empowerment": "Empowerment"
+  },
+  "social": {
+    "fb": "Facebook",
+    "tw": "Twitter",
+    "in": "Instagram"
+  }
+}
