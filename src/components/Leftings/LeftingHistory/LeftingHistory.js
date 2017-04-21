@@ -1,15 +1,18 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 
-import s from './styles';
+import HistoryItem from 'common/components/HistoryItem/HistoryItem';
 
 export default () => {
   return (
-    <View style={s.contentWrapper}>
-      <Text>Lefting History</Text>
-      <Button onPress={() => Actions.pop()}>back</Button>
+    <View>
+      <HistoryItem type="first" />
+      <HistoryItem />
+      <HistoryItem />
+      <HistoryItem />
+      <HistoryItem type="last" />
     </View>
   );
 };

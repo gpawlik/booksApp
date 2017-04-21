@@ -48,6 +48,8 @@ https://github.com/airbnb/react-native-maps/pull/1224/commits
 
 ?? https://github.com/mapbox/react-native-mapbox-gl
 
+- Flexbox - 2 equally width items: flexGrow: 1 (equal width), flexBasis: 0 (no initial width)
+
 # Troubleshooting
 
 1) error: ENOENT no such file or directory, uv_chdir
@@ -55,3 +57,10 @@ solution: react-native upgrade
 
 # Linked libraries
 - react-native-svg
+
+# Logo?
+- http://www.dafont.com/snowboarding-only.font?fpp=100&psize=l&text=BooksFinder
+
+# Strange things
+- propType of passed style to the component is number, not object
+(because of index based IDs created by StyleSheet.create)

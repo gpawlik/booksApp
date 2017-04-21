@@ -78,13 +78,7 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   badge: {
-    width: 50,
-    height: 50,
-    backgroundColor: colors.primaryDark,
-    borderRadius: 25,
-    overflow: 'hidden',
-    margin: 5,
-    alignItems: 'center'
+    margin: 5
   },
   badgeText: {
     color: '#fff',

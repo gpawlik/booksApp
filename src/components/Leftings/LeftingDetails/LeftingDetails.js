@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 
-import translate from 'utils/translate';
+import Rating from 'common/components/Rating/Rating';
 import s from './styles';
 
 const LeftingDetails = ({ lefting }) => {
@@ -15,27 +15,56 @@ const LeftingDetails = ({ lefting }) => {
 
   return (
     <View>
-      <View style={s.leftingImage} />
-      <View style={s.leftingInfoRow}>
-        <Text style={s.leftingInfoRowLabel}>
-          {translate('leftings.profile.label.description')}
-        </Text>
-        <Text>{description}</Text>
+      <View style={s.image} />
+
+      <View style={s.actionBox}>
+        <Button
+          onPress={() => Actions.leftingClaim()}
+          containerStyle={s.buttonCheckoutContainer}
+          style={s.buttonCheckout}
+          >
+          Checkout book
+        </Button>
+        <Button
+          onPress={() => Actions.leftingHistory()}
+          containerStyle={s.buttonHistoryContainer}
+          style={s.buttonHistory}
+          >
+          Show history
+        </Button>
       </View>
-      <View style={s.leftingInfoRow}>
-        <Text style={s.leftingInfoRowLabel}>
-          {translate('leftings.profile.label.date')}
-        </Text>
-        <Text>{leftingDateFormatted}</Text>
+
+      <View style={s.headerBox}>
+        <Text style={s.headerTitle}>El millor dels mons</Text>
+        <Text style={s.headerAuthor}>Quim Monzó</Text>
       </View>
-      <View style={s.leftingInfoRow}>
-        <Text style={s.leftingInfoRowLabel}>
-          {translate('leftings.profile.label.created')}
-        </Text>
-        <Text>{timeCreated}</Text>
+
+      <View style={s.metaBox}>
+        <View style={s.metaItem}>
+          <Text style={s.metaLabel}>Distance</Text>
+          <Text style={s.metaDataShort}>{'1.4km'}</Text>
+        </View>
+        <View style={s.metaItem}>
+          <Text style={s.metaLabel}>Rating</Text>
+          <Rating style={s.rating} stars={4.5} />
+        </View>
+        <View style={s.metaItem}>
+          <Text style={s.metaLabel}>Drop date</Text>
+          <Text style={s.metaDataLong}>7 days ago</Text>
+        </View>
+        <View style={s.metaItemLast}>
+          <Text style={s.metaLabel}>Swaps no.</Text>
+          <Text style={s.metaDataShort}>8</Text>
+        </View>
       </View>
-      <Button onPress={() => Actions.leftingHistory()}>Show history</Button>
-      <Button onPress={() => Actions.leftingClaim()}>Make a claim!</Button>
+
+      <View style={s.bookDescriptionBox}>
+        <Text style={s.bookDescriptionBox}>
+          Conté tretze contes i una nouvelle tenyits d'una incitant comicitat negra.
+          Són històries cruels, travessades per la felicitat, la violència i els
+          inferns privats, i poblades per personatges obsessius amb la rialla a contrapeu.
+        </Text>
+      </View>
     </View>
   );
 };

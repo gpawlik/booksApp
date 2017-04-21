@@ -1,9 +1,10 @@
 import React from 'react';
 import moment from 'moment';
-import { Image, Text, View } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 
+import * as Badges from 'common/components/Icons/Badges';
 import translate from 'utils/translate';
 import s from './styles';
 
@@ -32,7 +33,7 @@ const UserProfile = ({ user, isCurrent }) => {
   );
 
   return (
-    <View>
+    <ScrollView>
       <View style={s.profileTop}>
         <View style={s.profileThumbnailBox}>
           <Image style={s.profileThumbnail} source={{uri: 'https://unsplash.it/300/300/?random'}} />
@@ -59,35 +60,21 @@ const UserProfile = ({ user, isCurrent }) => {
         <View style={s.profileSection}>
           <Text style={s.profileSectionTitle}>Your badges:</Text>
           <View style={s.badgesBox}>
-            <View style={s.badge}>
-              <Text style={s.badgeText}>A</Text>
-            </View>
-            <View style={s.badge}>
-              <Text style={s.badgeText}>B</Text>
-            </View>
-            <View style={s.badge}>
-              <Text style={s.badgeText}>C</Text>
-            </View>
-            <View style={s.badge}>
-              <Text style={s.badgeText}>D</Text>
-            </View>
-            <View style={s.badge}>
-              <Text style={s.badgeText}>E</Text>
-            </View>
-            <View style={s.badge}>
-              <Text style={s.badgeText}>F</Text>
-            </View>
-            <View style={s.badge}>
-              <Text style={s.badgeText}>G</Text>
-            </View>
-            <View style={s.badge}>
-              <Text style={s.badgeText}>H</Text>
-            </View>
+            <Badges.BadgeA style={s.badge} />
+            <Badges.BadgeB style={s.badge} />
+            <Badges.BadgeC style={s.badge} />
+            <Badges.BadgeD style={s.badge} />
+            <Badges.BadgeE style={s.badge} />
+            <Badges.BadgeF style={s.badge} />
+            <Badges.BadgeG style={s.badge} />
+            <Badges.BadgeH style={s.badge} />
+            <Badges.BadgeI style={s.badge} />
+            <Badges.BadgeJ style={s.badge} />
           </View>
         </View>
       </View>
       {isCurrent && <Button onPress={() => Actions.editProfile({ userId: _id })} style={s.buttonSecondary}>{translate('users.profile.editButton')}</Button>}
-    </View>
+    </ScrollView>
   );
 };
 

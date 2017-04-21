@@ -3,6 +3,8 @@ import Button from 'react-native-button';
 import { View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
+import CogIcon from 'common/components/Icons/CogIcon';
+import CrossIcon from 'common/components/Icons/CrossIcon';
 import s from './styles';
 
 export default ({ hasCloseButton }) => {
@@ -10,16 +12,16 @@ export default ({ hasCloseButton }) => {
     <Button
       onPress={() => Actions.profile()}
       containerStyle={s.rightButton}
-      style={s.rightButtonText}>
-      X
+      >
+      <CrossIcon />
     </Button>
   );
   const settingsButton = (
     <Button
       onPress={() => Actions.settings()}
       containerStyle={s.rightButton}
-      style={s.rightButtonText}>
-      A
+      >
+      <CogIcon />
     </Button>
   );
   const navButton = hasCloseButton ? closeButton : settingsButton;

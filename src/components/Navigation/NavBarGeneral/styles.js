@@ -44,8 +44,5 @@ export default StyleSheet.create({
     padding: 8,
     flexDirection: 'row',
     transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }]
-  },
-  rightButtonText: {
-    color: '#333'
   }
 });
