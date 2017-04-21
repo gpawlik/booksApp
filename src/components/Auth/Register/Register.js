@@ -4,8 +4,10 @@ import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 
 import TextFieldGroup from 'common/components/TextFieldGroup/TextFieldGroup';
+import SignupIcon from 'common/components/Icons/SignupIcon';
 import validateInput from 'utils/validations/signup';
 import translate from 'utils/translate';
+import s from './styles';
 
 class Register extends React.Component {
   constructor(props) {
@@ -62,7 +64,7 @@ class Register extends React.Component {
             text: translate('messages.userCreateSuccess'),
             category: 'user_created'
           });
-          Actions.login();
+          Actions.profile();
         })
         .catch(err => {
           this.setState({
@@ -90,43 +92,56 @@ class Register extends React.Component {
     const { username, email, password, passwordConfirmation, errors, isLoading, invalid } = this.state;
 
     return(
-      <View>
-        <TextFieldGroup
-          field="username"
-          label={translate('signup.form.label.username')}
-          value={username}
-          error={errors.username}
-          onChange={this.onChange.bind(this, 'username')}
-          checkUserExists={this.checkUserExists}
-          />
-        <TextFieldGroup
-          field="email"
-          label={translate('signup.form.label.email')}
-          value={email}
-          error={errors.email}
-          onChange={this.onChange.bind(this, 'email')}
-          checkUserExists={this.checkUserExists}
-          type="email"
-          />
-        <TextFieldGroup
-          field="password"
-          label={translate('signup.form.label.password')}
-          value={password}
-          error={errors.password}
-          onChange={this.onChange.bind(this, 'password')}
-          type="password"
-          secureTextEntry
-          />
-        <TextFieldGroup
-          field="passwordConfirmation"
-          label={translate('signup.form.label.repeatPassword')}
-          value={passwordConfirmation}
-          error={errors.passwordConfirmation}
-          onChange={this.onChange.bind(this, 'passwordConfirmation')}
-          type="password"
-          secureTextEntry
-          />
-        <Button onPress={this.onSubmit} disabled={isLoading || invalid}>{translate('signup.form.button')}</Button>
+      <View style={s.container}>
+        <SignupIcon />
+        <View style={s.formBox}>
+          <TextFieldGroup
+            field="username"
+            label={translate('signup.form.label.username')}
+            placeholder={translate('signup.form.label.username')}
+            value={username}
+            error={errors.username}
+            onChange={this.onChange.bind(this, 'username')}
+            checkUserExists={this.checkUserExists}
+            />
+          <TextFieldGroup
+            field="email"
+            label={translate('signup.form.label.email')}
+            placeholder={translate('signup.form.label.email')}
+            value={email}
+            error={errors.email}
+            onChange={this.onChange.bind(this, 'email')}
+            checkUserExists={this.checkUserExists}
+            type="email"
+            />
+          <TextFieldGroup
+            field="password"
+            label={translate('signup.form.label.password')}
+            placeholder={translate('signup.form.label.password')}
+            value={password}
+            error={errors.password}
+            onChange={this.onChange.bind(this, 'password')}
+            type="password"
+            secureTextEntry
+            />
+          <TextFieldGroup
+            field="passwordConfirmation"
+            label={translate('signup.form.label.repeatPassword')}
+            placeholder={translate('signup.form.label.repeatPassword')}
+            value={passwordConfirmation}
+            error={errors.passwordConfirmation}
+            onChange={this.onChange.bind(this, 'passwordConfirmation')}
+            type="password"
+            secureTextEntry
+            />
+          <Button
+            onPress={this.onSubmit}
+            containerStyle={s.buttonContainer}
+            style={s.button}
+            disabled={isLoading || invalid}>
+            {translate('signup.form.button')}
+          </Button>
+        </View>
       </View>
     );
   }

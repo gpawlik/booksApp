@@ -13,12 +13,17 @@ For routing using https://github.com/aksonov/react-native-router-flux
 
 DEV:
 - remote-redux-devtools-on-debugger
+- babel-plugin-module-resolver (TO ELIMINATE, just to make maps plugin work)
 
 # Questions/Doubts
 
 - difference between react-redux and react-redux/native?
 
 # Interesting
+
+- check out ...StyleSheet.absoluteFillObject
+
+- you can absolute position elements BUT zIndex works only on View components
 
 - you can pass props in the router:
 <Button onPress={() => Actions.events({ data: 'Something', title: 'My title' })}>
@@ -30,3 +35,23 @@ for your component and use ()=>this.props.dispatch(Actions.ACTION_NAME(PARAM)
 - programmatically go back: Actions.pop()
 
 - refresh scene: Actions.refresh(PARAMS)
+
+- clean up and re-link:
+rm -rf ios android node_modules
+npm install
+react-native upgrade
+react-native link
+
+- make native-maps work without error:
+https://github.com/airbnb/react-native-maps/issues/1213
+https://github.com/airbnb/react-native-maps/pull/1224/commits
+
+?? https://github.com/mapbox/react-native-mapbox-gl
+
+# Troubleshooting
+
+1) error: ENOENT no such file or directory, uv_chdir
+solution: react-native upgrade
+
+# Linked libraries
+- react-native-svg

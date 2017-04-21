@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
   SET_CURRENT_USER,
+  UNSET_CURRENT_USER,
   GET_USERS_SUCCESS,
   GET_USERS_FAILURE,
   GET_USER_PROFILE_SUCCESS,
@@ -10,14 +11,20 @@ import {
 } from './Users.actionTypes';
 import config from 'config/development';
 
-export function setCurrentUser(user) {
+export const setCurrentUser = user => {
   return {
     type: SET_CURRENT_USER,
     user
   };
-}
+};
 
-export function getUsers() {
+export const unsetCurrentUser = () => {
+  return {
+    type: UNSET_CURRENT_USER
+  };
+};
+
+export const getUsers = () => {
   return dispatch => {
     return axios
       .get(`${config.apiServer}/api/users`)
@@ -34,9 +41,9 @@ export function getUsers() {
         });
       });
   };
-}
+};
 
-export function getUser(userId) {
+export const getUser = userId => {
   return dispatch => {
     return axios
       .get(`${config.apiServer}/api/users/${userId}`)
@@ -47,16 +54,15 @@ export function getUser(userId) {
         });
       })
       .catch(error => {
-        console.log('E', error);
         dispatch({
           type: GET_USER_PROFILE_FAILURE,
           error: error.response.data
         });
       });
   };
-}
+};
 
-export function editUser({ id, username, email, location, interests }) {
+export const editUser = ({ id, username, email, location, interests }) => {
   return dispatch => {
     return axios
       .put(`${config.apiServer}/api/users/${id}`, {
@@ -78,4 +84,4 @@ export function editUser({ id, username, email, location, interests }) {
         });
       });
   };
-}
+};

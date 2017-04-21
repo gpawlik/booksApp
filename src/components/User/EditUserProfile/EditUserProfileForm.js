@@ -1,15 +1,11 @@
 import React from 'react';
-import shortid from 'shortid';
 import { View } from 'react-native';
 import Button from 'react-native-button';
 
 import TextFieldGroup from 'common/components/TextFieldGroup/TextFieldGroup';
-import MultiSelectGroup from 'common/components/MultiSelect/MultiSelectGroup';
-import MultiSelectGroupItem from 'common/components/MultiSelect/MultiSelectGroupItem';
-import config from 'config/development';
 import translate from 'utils/translate';
 
-const EditUserProfileForm = ({ user, errors, onChange, onSelectInterest, onSubmit }) => {
+const EditUserProfileForm = ({ user, errors, onChange, onSubmit }) => {
   return (
     <View>
       <TextFieldGroup
@@ -33,24 +29,6 @@ const EditUserProfileForm = ({ user, errors, onChange, onSelectInterest, onSubmi
         error={errors.location}
         onChange={onChange.bind(this, 'location')}
       />
-      <MultiSelectGroup
-        field="interests"
-        label={translate('users.edit.form.label.interests')}
-        options={config.interestList}
-        error={errors.interests}>
-        {config.interestList.map(interest => {
-          const selected = user.interests ? user.interests.indexOf(interest.id) !== -1 : false;
-
-          return (
-            <MultiSelectGroupItem
-              key={shortid.generate()}
-              selected={selected}
-              onClick={onSelectInterest}
-              {...interest}
-              />
-          );
-        })}
-      </MultiSelectGroup>
       <Button onPress={onSubmit}>
         {translate('users.edit.form.saveButton')}
       </Button>

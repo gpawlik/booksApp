@@ -6,9 +6,8 @@ import { createStructuredSelector } from 'reselect';
 
 import LeftingDetails from './LeftingDetails';
 import Preloader from 'common/components/Preloader/Preloader';
-import { getLefting, deleteLefting } from 'components/Leftings/Leftings.actions';
+import { getLefting } from 'components/Leftings/Leftings.actions';
 import { selectLefting } from 'components/Leftings/Leftings.selector';
-import { selectAuthUser } from 'components/Auth/Auth.selector';
 
 class LeftingDetailsContainer extends React.Component {
 
@@ -18,7 +17,6 @@ class LeftingDetailsContainer extends React.Component {
     this.state = {
       isLoading: true
     };
-    this.deleteLefting = this.deleteLefting.bind(this);
   }
 
   componentDidMount() {
@@ -32,20 +30,13 @@ class LeftingDetailsContainer extends React.Component {
       });
   }
 
-  deleteLefting(leftingId) {
-    this.props.deleteLefting(leftingId).then(() => {
-      Actions.leftingsList();
-    });
-  }
-
   render() {
     return (
       <View>
         {this.state.isLoading && <Preloader />}
         <LeftingDetails
           lefting={this.props.lefting}
-          deleteLefting={this.deleteLefting}
-          isAdmin={this.props.authUser.isAdmin} />
+          />
       </View>
     );
   }
@@ -53,14 +44,11 @@ class LeftingDetailsContainer extends React.Component {
 
 LeftingDetailsContainer.propTypes = {
   lefting: React.PropTypes.object.isRequired,
-  getLefting: React.PropTypes.func.isRequired,
-  deleteLefting: React.PropTypes.func.isRequired,
-  authUser: React.PropTypes.object.isRequired
+  getLefting: React.PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  lefting: selectLefting(),
-  authUser: selectAuthUser()
+  lefting: selectLefting()
 });
 
-export default connect(mapStateToProps, { getLefting, deleteLefting })(LeftingDetailsContainer);
+export default connect(mapStateToProps, { getLefting })(LeftingDetailsContainer);

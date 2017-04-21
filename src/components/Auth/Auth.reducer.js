@@ -2,7 +2,8 @@ import { fromJS } from 'immutable';
 import isEmpty from 'lodash/isEmpty';
 
 import {
-  SET_CURRENT_USER
+  SET_CURRENT_USER,
+  UNSET_CURRENT_USER
 } from 'components/User/Users.actionTypes';
 
 const initialState = fromJS({
@@ -13,8 +14,13 @@ const initialState = fromJS({
 export default (state = initialState, action = {}) => {
   switch(action.type) {
     case SET_CURRENT_USER:
-      return state.set('user', fromJS(action.user))
+      return state
+        .set('user', fromJS(action.user))
         .set('isAuthenticated', !isEmpty(action.user));
+    case UNSET_CURRENT_USER:
+      return state
+        .set('user', fromJS({}))
+        .set('isAuthenticated', false);
     default: return state;
   }
 };

@@ -7,50 +7,41 @@ import Button from 'react-native-button';
 import translate from 'utils/translate';
 import s from './styles';
 
-const LeftingDetails = ({ lefting, isAdmin, deleteLefting }) => {
+const LeftingDetails = ({ lefting }) => {
   // TODO: if no lefting data, redirect to error page
-  const { _id, description, leftingDate, createdAt } = lefting;
+  const { description, leftingDate, createdAt } = lefting;
   const leftingDateFormatted = moment(leftingDate).format('DD/MM/YYYY');
   const timeCreated = moment(createdAt).fromNow();
-  const adminLinks = (
-    <View>
-      <Text onClick={() => deleteLefting(_id)}>delete</Text>
-      <Button onPress={() => Actions.editLefting({ leftingId: _id })}>edit</Button>
-    </View>
-  );
 
   return (
     <View>
-      <View>
-        <View style={s.leftingImage} />
-        <View style={s.leftingInfoRow}>
-          <Text style={s.leftingInfoRowLabel}>
-            {translate('leftings.profile.label.description')}
-          </Text>
-          <Text>{description}</Text>
-        </View>
-        <View style={s.leftingInfoRow}>
-          <Text style={s.leftingInfoRowLabel}>
-            {translate('leftings.profile.label.date')}
-          </Text>
-          <Text>{leftingDateFormatted}</Text>
-        </View>
-        <View style={s.leftingInfoRow}>
-          <Text style={s.leftingInfoRowLabel}>
-            {translate('leftings.profile.label.created')}
-          </Text>
-          <Text>{timeCreated}</Text>
-        </View>
-        {isAdmin && adminLinks}
+      <View style={s.leftingImage} />
+      <View style={s.leftingInfoRow}>
+        <Text style={s.leftingInfoRowLabel}>
+          {translate('leftings.profile.label.description')}
+        </Text>
+        <Text>{description}</Text>
       </View>
+      <View style={s.leftingInfoRow}>
+        <Text style={s.leftingInfoRowLabel}>
+          {translate('leftings.profile.label.date')}
+        </Text>
+        <Text>{leftingDateFormatted}</Text>
+      </View>
+      <View style={s.leftingInfoRow}>
+        <Text style={s.leftingInfoRowLabel}>
+          {translate('leftings.profile.label.created')}
+        </Text>
+        <Text>{timeCreated}</Text>
+      </View>
+      <Button onPress={() => Actions.leftingHistory()}>Show history</Button>
+      <Button onPress={() => Actions.leftingClaim()}>Make a claim!</Button>
     </View>
   );
 };
 
 LeftingDetails.propTypes = {
-  lefting: PropTypes.object.isRequired,
-  isAdmin: PropTypes.bool,
-  deleteLefting: PropTypes.func
+  lefting: PropTypes.object.isRequired
 };
 
 export default LeftingDetails;

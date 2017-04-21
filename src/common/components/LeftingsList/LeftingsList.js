@@ -6,20 +6,12 @@ import {
   View
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import Button from 'react-native-button';
 
-import translate from 'utils/translate';
 import s from './styles';
 
-const LeftingsList = ({ leftings, isAdmin }) => {
-  const createLeftingLink = (
-    <Button onPress={() => Actions.createLefting()}>
-      {translate('leftings.list.createNew')}
-    </Button>
-  );
-
+const LeftingsList = ({ leftings }) => {
   return (
-    <View>
+    <View style={s.container}>
       <ListView
         enableEmptySections
         dataSource={leftings}
@@ -28,25 +20,24 @@ const LeftingsList = ({ leftings, isAdmin }) => {
             <TouchableHighlight
               onPress={() => Actions.lefting({ leftingId: lefting._id })}
               underlayColor="#eee"
-              style={s.listItem}>
+              style={s.item}>
               <View>
-                <Text style={s.listItemTitle}>{lefting.description}</Text>
-                <Text style={s.listItemHeadline}>{lefting.bookId}</Text>
+                <View style={s.itemPicture}></View>
+                <View style={s.itemInfo}>
+                  <Text style={s.itemTitle}>{lefting.description}</Text>
+                  <Text style={s.itemHeadline}>{lefting.bookId}</Text>
+                </View>
               </View>
             </TouchableHighlight>
           );
         }}
       />
-      <View className="full-content-wrapper">
-        {isAdmin && createLeftingLink}
-      </View>
     </View>
   );
 };
 
 LeftingsList.propTypes = {
-  leftings: PropTypes.object,
-  isAdmin: PropTypes.bool
+  leftings: PropTypes.object.isRequired
 };
 
 export default LeftingsList;

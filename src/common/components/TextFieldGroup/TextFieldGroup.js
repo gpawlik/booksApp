@@ -12,7 +12,7 @@ const TextFieldGroup = ({
   secureTextEntry, multiline = false
 }) => {
   return (
-    <View>
+    <View style={s.inputBox}>
       <Text style={s.label}>{label}</Text>
       <TextInput
         onChangeText={onChange}

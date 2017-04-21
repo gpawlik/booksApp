@@ -5,7 +5,9 @@ import { Actions } from 'react-native-router-flux';
 import { createStructuredSelector } from 'reselect';
 
 import UserProfile from './UserProfile';
+
 import Preloader from 'common/components/Preloader/Preloader';
+import NavBarGeneral from 'components/Navigation/NavBarGeneral/NavBarGeneral';
 import { getUser } from 'components/User/Users.actions';
 import { selectUser } from 'components/User/Users.selector';
 import { selectAuthUser, selectIsAuthenticated } from 'components/Auth/Auth.selector';
@@ -25,6 +27,14 @@ class UserProfileContainer extends React.Component {
     if (isAuthenticated) {
       this.fetchUserData(authUser.id);
     } else {
+      Actions.login();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { isAuthenticated } = nextProps;
+
+    if(this.props.isAuthenticated !== isAuthenticated && !isAuthenticated) {
       Actions.login();
     }
   }
@@ -54,5 +64,9 @@ const mapStateToProps = createStructuredSelector({
   authUser: selectAuthUser(),
   isAuthenticated: selectIsAuthenticated()
 });
+
+UserProfileContainer.renderNavigationBar = () => {
+  return <NavBarGeneral />;
+};
 
 export default connect(mapStateToProps, { getUser })(UserProfileContainer);

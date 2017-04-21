@@ -24,10 +24,5 @@ export default StyleSheet.create({
   },
   button: {
     color: 'white'
-  },
-  registerButton: {
-    marginTop: 5,
-    fontSize: 10,
-    color: '#999'
   }
 });

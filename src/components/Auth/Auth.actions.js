@@ -3,7 +3,7 @@ import jwtDecode from 'jwt-decode';
 
 import { setItem, removeItem } from 'utils/storage';
 import setAuthorizationToken from 'utils/setAuthorizationToken';
-import { setCurrentUser } from 'components/User/Users.actions';
+import { setCurrentUser, unsetCurrentUser } from 'components/User/Users.actions';
 import config from 'config/development';
 
 export function login(data) {
@@ -23,7 +23,7 @@ export function logout() {
   return dispatch => {
     removeItem('jwtToken').then(() => {
       setAuthorizationToken(false);
-      dispatch(setCurrentUser({}));
+      dispatch(unsetCurrentUser());
     });
   };
 }

@@ -31,7 +31,7 @@ class Navigation extends Component {
     );
     const guestLinks = (
       <View>
-        <Button onPress={() => Actions.login()}>{translate('navigation.user.login')}</Button>
+        <Button onPress={() => Actions.profile()}>{translate('navigation.user.login')}</Button>
         <Button onPress={() => Actions.register()}>{translate('navigation.user.signup')}</Button>
       </View>
     );

@@ -1,23 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListView, View } from 'react-native';
+import { ListView } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 
-import LeftingsList from './LeftingsList';
-import Preloader from 'common/components/Preloader/Preloader';
 import { getLeftings } from './../Leftings.actions';
 import { selectLeftings } from 'components/Leftings/Leftings.selector';
-import { selectAuthUser } from 'components/Auth/Auth.selector';
+import LeftingsOverview from './LeftingsOverview';
 
-class LeftingsListContainer extends React.Component {
+class LeftingsOverviewContainer extends React.Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
     this.state = {
       isLoading: true,
-      dataSource: ds.cloneWithRows([])
+      dataSource: ds.cloneWithRows([]),
+      view: 'list'
     };
+    this.toggleView = this.toggleView.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,26 +37,33 @@ class LeftingsListContainer extends React.Component {
       });
   }
 
+  toggleView() {
+    const currentView = this.state.view;
+    const newView = currentView === 'map' ? 'list' : 'map';
+
+    this.setState({
+      view: newView
+    });
+  }
+
   render() {
     return (
-      <View>
-        {this.state.isLoading && <Preloader />}
-        <LeftingsList
-          leftings={this.state.dataSource}
-          isAdmin={this.props.user.isAdmin} />
-      </View>
+      <LeftingsOverview
+        leftings={this.state.dataSource}
+        state={this.state.view}
+        isLoading={this.state.isLoading}
+        toggleView={this.toggleView}
+      />
     );
   }
 }
 
-LeftingsListContainer.propTypes = {
-  leftings: React.PropTypes.array.isRequired,
-  user: React.PropTypes.object.isRequired
+LeftingsOverviewContainer.propTypes = {
+  leftings: React.PropTypes.array.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  leftings: selectLeftings(),
-  user: selectAuthUser()
+  leftings: selectLeftings()
 });
 
-export default connect(mapStateToProps, { getLeftings })(LeftingsListContainer);
+export default connect(mapStateToProps, { getLeftings })(LeftingsOverviewContainer);

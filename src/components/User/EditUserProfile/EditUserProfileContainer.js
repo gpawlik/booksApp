@@ -18,8 +18,7 @@ class EditProfileContainer extends React.Component {
         id: '',
         username: '',
         email: '',
-        location: '',
-        interests: []
+        location: ''
       },
       errors: {},
       isFormLoading: false,
@@ -27,7 +26,6 @@ class EditProfileContainer extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onSelectInterest = this.onSelectInterest.bind(this);
   }
 
   onChange(type, value) {
@@ -59,49 +57,24 @@ class EditProfileContainer extends React.Component {
       });
   }
 
-  onSelectInterest(id) {
-    this.setState({
-      user: {
-        ...this.state.user,
-        interests: this.toggleInterests(id)
-      }
-    });
-  }
-
-  toggleInterests(interestId) {
-    const currentInterests = this.state.user.interests;
-    const newInterests = currentInterests ? currentInterests.slice() : [];
-    const existingIndex = newInterests.indexOf(interestId);
-
-    if(existingIndex === -1) {
-      newInterests.push(interestId);
-    } else {
-      newInterests.splice(existingIndex, 1);
-    }
-    return newInterests;
-  }
-
   componentDidMount() {
-    this.fetchUserData(this.props.userId);
+    this.updateState(this.props.user);
   }
 
   componentWillReceiveProps(nextProps) {
-    const { _id, username, email, location, interests } = nextProps.user;
+    this.updateState(nextProps.user);
+  }
+
+  updateState(props) {
+    const { _id, username, email, location } = props;
 
     this.setState({
       user: {
         id: _id,
         username,
         email,
-        location,
-        interests
+        location
       }
-    });
-  }
-
-  fetchUserData(userId) {
-    this.props.getUser(userId).then(() => {
-      this.setState({ isLoading: false });
     });
   }
 
@@ -110,7 +83,6 @@ class EditProfileContainer extends React.Component {
       <EditUserProfileForm
         onChange={this.onChange}
         onSubmit={this.onSubmit}
-        onSelectInterest={this.onSelectInterest}
         {...this.state}
         />
     );

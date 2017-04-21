@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 
 import TextFieldGroup from 'common/components/TextFieldGroup/TextFieldGroup';
+import LoginIcon from 'common/components/Icons/LoginIcon';
 import validateInput from 'utils/validations/login';
 import translate from 'utils/translate';
 import s from './styles';
@@ -22,6 +23,14 @@ class LoginForm extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { isAuthenticated } = nextProps;
+
+    if(this.props.isAuthenticated !== isAuthenticated && isAuthenticated) {
+      Actions.profileDetails();
+    }
+  }
+
   onSubmit(e) {
     e.preventDefault();
     // otherwise we have server-side validation
@@ -29,9 +38,6 @@ class LoginForm extends Component {
       this.setState({ errors: {}, isLoading: true });
       this.props
         .login(this.state)
-        .then(() => {
-          return Actions.tabbar();
-        })
         .catch(err => {
           this.setState({
             errors: err.response.data,
@@ -59,6 +65,7 @@ class LoginForm extends Component {
 
     return(
       <View style={s.container}>
+        <LoginIcon />
         <Text>{ errors.form }</Text>
         <View style={s.formBox}>
           <TextFieldGroup
@@ -90,6 +97,12 @@ class LoginForm extends Component {
             >
             {translate('login.form.button')}
           </Button>
+          <Button
+            style={s.registerButton}
+            onPress={() => Actions.register()}
+            >
+            Click here to register
+          </Button>
         </View>
       </View>
     );
@@ -97,7 +110,8 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  login: React.PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 export default LoginForm;

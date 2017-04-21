@@ -8,7 +8,7 @@ export default StyleSheet.create({
     backgroundColor: colors.primaryDark,
     alignItems: 'center'
   },
-  profileThumbnail: {
+  profileThumbnailBox: {
     width: 130,
     height: 130,
     borderRadius: 65,
@@ -18,6 +18,14 @@ export default StyleSheet.create({
     overflow: 'hidden',
     marginTop: 15
   },
+  profileThumbnail: {
+    width: 130,
+    height: 130
+  },
+  secondaryButton: {
+    color: '#aeaeae',
+    fontSize: 10
+  },
   profileContent: {
     padding: 25,
     alignItems: 'stretch'
@@ -26,6 +34,11 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginTop: 15,
+    marginBottom: 0,
+    textAlign: 'center'
+  },
+  profileMetaTitle: {
+    fontSize: 12,
     marginBottom: 15,
     textAlign: 'center'
   },
@@ -39,7 +52,43 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: 15
   },
-  profileInterests: {
-
+  profileSection: {
+    marginTop: 10,
+    marginBottom: 10
+  },
+  profileSectionTitle: {
+    fontSize: 15
+  },
+  leftingItem: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#aeaeae',
+    padding: 8
+  },
+  leftingItemTitle: {
+    fontSize: 12
+  },
+  leftingItemSubTitle: {
+    fontSize: 10
+  },
+  badgesBox: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    marginTop: 10,
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
+  badge: {
+    width: 50,
+    height: 50,
+    backgroundColor: colors.primaryDark,
+    borderRadius: 25,
+    overflow: 'hidden',
+    margin: 5,
+    alignItems: 'center'
+  },
+  badgeText: {
+    color: '#fff',
+    lineHeight: 50,
+    fontSize: 20
   }
 });

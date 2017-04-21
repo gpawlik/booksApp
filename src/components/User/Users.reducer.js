@@ -5,7 +5,8 @@ import {
   GET_USER_PROFILE_SUCCESS,
   GET_USER_PROFILE_FAILURE,
   EDIT_USER_PROFILE_SUCCESS,
-  EDIT_USER_PROFILE_FAILURE
+  EDIT_USER_PROFILE_FAILURE,
+  UNSET_CURRENT_USER
 } from './Users.actionTypes';
 
 const initialState = fromJS({
@@ -19,6 +20,8 @@ export default (state = initialState, action) => {
       return state.set('users', fromJS(action.users));
     case GET_USER_PROFILE_SUCCESS:
       return state.set('user', fromJS(action.user));
+    case UNSET_CURRENT_USER:
+      return state.set('user', fromJS({}));
     case EDIT_USER_PROFILE_SUCCESS:
       const editedUserIndex = state.get('users').findIndex(obj => obj.get('_id') === action.user._id);
 
