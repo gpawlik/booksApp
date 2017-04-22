@@ -24,6 +24,7 @@ import RegisterContainer from 'components/Auth/Register/RegisterContainer';
 
 import NavigationDrawer from 'components/Navigation/NavigationDrawer';
 import TabIcon from 'common/components/TabIcon/TabIcon';
+import MenuIcon from 'common/components/Icons/MenuIcon';
 
 import translate from 'utils/translate';
 import colors from 'config/colors';
@@ -35,7 +36,7 @@ export default Actions.create(
 
       <Scene key="tabbar" initial hideNavBar component={NavigationDrawer}>
         <Scene key="main" tabs style={{backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#dedede'}}>
-          <Scene key="leftings" initial title="Leftings" icon={TabIcon} navigationBarStyle={{backgroundColor: colors.primaryDark}} titleStyle={{color: 'white'}}>
+          <Scene key="leftings" title="Leftings" icon={TabIcon} navigationBarStyle={{backgroundColor: colors.primaryDark}} titleStyle={{color: 'white'}} drawerImage={<MenuIcon />}>
             <Scene key="leftingsList" component={LeftingsOverviewContainer} title={translate('leftings.list.title')} />
             <Scene key="lefting" component={LeftingDetailsContainer} title={translate('leftings.profile.title')} />
             <Scene key="leftingHistory" component={LeftingHistory} title="Lefting History" />

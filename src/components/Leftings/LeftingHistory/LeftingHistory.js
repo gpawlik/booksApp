@@ -1,7 +1,5 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import Button from 'react-native-button';
 
 import HistoryItem from 'common/components/HistoryItem/HistoryItem';
 
