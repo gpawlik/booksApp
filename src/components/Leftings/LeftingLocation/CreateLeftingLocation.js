@@ -8,7 +8,7 @@ import s from './styles';
 export default () => {
   return (
     <View style={s.contentWrapper}>
-      <Text>Make a picture!</Text>
+      <Text>Set up location!</Text>
       <Button onPress={() => Actions.leftings()}>all set!</Button>
     </View>
   );

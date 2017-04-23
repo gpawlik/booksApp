@@ -23,7 +23,7 @@ DEV:
 
 - check out ...StyleSheet.absoluteFillObject
 
-- you can absolute position elements BUT zIndex works only on View components
+- you can absolute position elements BUT zIndex works only on View components (?)
 
 - you can pass props in the router:
 <Button onPress={() => Actions.events({ data: 'Something', title: 'My title' })}>
@@ -64,3 +64,29 @@ solution: react-native upgrade
 # Strange things
 - propType of passed style to the component is number, not object
 (because of index based IDs created by StyleSheet.create)
+
+# TO-DOs
+* Client
+
+[ ] some messaging system
+[ ] make connection work android
+[ ] make maps work android
+[ ] setup map component with markers
+[ ] setup camera component
+[ ] make searches via Goodreads API
+
+[ ] visual: claim details
+[x] visual: settings scene
+[ ] visual: navigation consistency
+[x] visual: about scene
+[x] visual: book section in details
+
+* Backend
+[ ] process images (store cloud?)
+
+PROS
+# you build the app ONCE
+
+CONS
+# no long term prevision of support from FB
+# 670 dependencies

@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 
 import Rating from 'common/components/Rating/Rating';
+import BookMeta from 'common/components/BookMeta/BookMeta';
 import s from './styles';
 
 const LeftingDetails = ({ lefting }) => {
@@ -14,7 +15,7 @@ const LeftingDetails = ({ lefting }) => {
   const timeCreated = moment(createdAt).fromNow();
 
   return (
-    <View>
+    <ScrollView>
       <View style={s.image} />
 
       <View style={s.actionBox}>
@@ -65,7 +66,18 @@ const LeftingDetails = ({ lefting }) => {
           inferns privats, i poblades per personatges obsessius amb la rialla a contrapeu.
         </Text>
       </View>
-    </View>
+
+      <View style={s.bookMetaBox}>
+        <BookMeta
+          publishDate="20/08/1988"
+          publisher="PenguinBooks"
+          pages={178}
+          type="Hardcover"
+          isbn="8420471836"
+          isbn13="9788420471839"
+          />
+      </View>
+    </ScrollView>
   );
 };
 

@@ -1,10 +1,14 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 import s from './styles';
 
 export default ({ selected, title }) => {
+  const iconStyle = selected ? s.iconSelected : s.icon;
+
   return (
-    <Text style={{color: selected ? 'red' : 'black', backgroundColor: '#fff'}}>{title}</Text>
+    <View style={s.container}>
+      <Text style={iconStyle}>{title}</Text>
+    </View>
   );
 };

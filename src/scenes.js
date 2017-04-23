@@ -8,12 +8,10 @@ import UserLeftingsListContainer from 'components/User/UserLeftings/UserLeftings
 import LeftingsOverviewContainer from 'components/Leftings/LeftingsOverview/LeftingsOverviewContainer';
 import LeftingDetailsContainer from 'components/Leftings/LeftingDetails/LeftingDetailsContainer';
 import LeftingHistory from 'components/Leftings/LeftingHistory/LeftingHistory';
-import LeftingClaim from 'components/Leftings/LeftingClaim/LeftingClaim';
-import LeftingClaimPicture from 'components/Leftings/LeftingClaimPicture/LeftingClaimPicture';
 
-import CreateLeftingPage from 'components/Leftings/LeftingDetails/CreateLeftingPage';
-import CreateLeftingPicture from 'components/Leftings/LeftingPicture/CreateLeftingPicture';
-import CreateLeftingLocation from 'components/Leftings/LeftingLocation/CreateLeftingLocation';
+import ClaimBookSearchContainer from 'components/Claim/ClaimBookSearch/ClaimBookSearchContainer';
+import ClaimPicture from 'components/Claim/ClaimPicture/ClaimPicture';
+import ClaimConfirmationContainer from 'components/Claim/ClaimConfirmation/ClaimConfirmationContainer';
 
 import ErrorScreen from 'components/Error/ErrorScreen';
 import About from 'components/About/About';
@@ -40,13 +38,13 @@ export default Actions.create(
             <Scene key="leftingsList" component={LeftingsOverviewContainer} title={translate('leftings.list.title')} />
             <Scene key="lefting" component={LeftingDetailsContainer} title={translate('leftings.profile.title')} />
             <Scene key="leftingHistory" component={LeftingHistory} title="Lefting History" />
-            <Scene key="leftingClaim" component={LeftingClaim} title="Lefting Claim" />
-            <Scene key="leftingClaimPicture" component={LeftingClaimPicture} title="Lefting Claim Picture" />
+            <Scene key="leftingClaimPicture" component={ClaimPicture} title="Lefting Claim Picture" />
+            <Scene key="leftingClaim" component={ClaimConfirmationContainer} title="Lefting Claim Confirmation" />
           </Scene>
-          <Scene key="createLefting" title="Create" icon={TabIcon} navigationBarStyle={{backgroundColor: colors.primaryDark}} titleStyle={{color: 'white'}}>
-            <Scene key="step1" component={CreateLeftingPicture} hideNavBar title="Make a picture" />
-            <Scene key="step2" component={CreateLeftingPage} hideNavBar={false} title="Setup details" />
-            <Scene key="step3" component={CreateLeftingLocation} title="Setup location" />
+          <Scene key="createLefting" initial title="Create" icon={TabIcon} navigationBarStyle={{backgroundColor: colors.primaryDark}} titleStyle={{color: 'white'}}>
+            <Scene key="step1" component={ClaimBookSearchContainer} hideNavBar title="Claim Book Search" />
+            <Scene key="step2" component={ClaimPicture} hideNavBar={false} title="Claim picture" />
+            <Scene key="step3" component={ClaimConfirmationContainer} title="Claim confirmation" />
           </Scene>
           <Scene key="profile" title="Profile" icon={TabIcon} navigationBarStyle={{backgroundColor: colors.primaryDark}} titleStyle={{color: 'white'}}>
             <Scene key="profileDetails" component={UserProfileContainer} title={translate('users.profile.title')} />

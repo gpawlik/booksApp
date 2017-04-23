@@ -1,20 +1,27 @@
 import { StyleSheet } from 'react-native';
 
+import colors from 'config/colors';
+
 export default StyleSheet.create({
   contentWrapper: {
     backgroundColor: '#fff'
   },
   section: {
-    padding: 10,
-    borderBottomColor: '#dedede',
-    borderBottomWidth: 1
   },
   sectionTitle: {
+    padding: 10,
     fontSize: 14,
-    marginBottom: 5
+    fontWeight: '600',
+    color: '#aaa',
+    backgroundColor: '#fafafa'
+  },
+  sectionItems: {
+    borderTopColor: '#dedede',
+    borderTopWidth: 1
   },
   logoutButton: {
-    color: 'red',
+    padding: 15,
+    color: colors.primaryDark,
     fontSize: 12
   }
 });

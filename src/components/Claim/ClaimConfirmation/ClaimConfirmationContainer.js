@@ -1,31 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 
-import { createLefting } from './../Leftings.actions';
+import ClaimConfirmation from './ClaimConfirmation';
+import { createLefting } from 'components/Leftings/Leftings.actions';
 import { addFlashMessage } from 'common/Flash/Flash.actions';
-import LeftingForm from './LeftingForm';
 import translate from 'utils/translate';
 
 // TODO: add client validation
-class CreateLeftingPage extends React.Component {
+class ClaimConfirmationContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       title: '',
-      headline: '',
-      description: '',
-      leftingDate: '',
+      author: '',
+      isbn: '',
       errors: {},
       isFormLoading: false
     };
 
-    this.onChange = this.onChange.bind(this);
+    this.onClaimChange = this.onClaimChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChange(type, value) {
+  onClaimChange(type, value) {
     this.setState({ [type]: value });
   }
 
@@ -51,19 +51,18 @@ class CreateLeftingPage extends React.Component {
 
   render() {
     return (
-      <LeftingForm
-        onSubmit={() => Actions.step3()}
-        onChange={this.onChange}
-        buttonText={translate('leftings.create.buttonText')}
-        {...this.state}
+      <ClaimConfirmation
+        claim={this.state}
+        onClaimChange={this.onClaimChange}
+        onSubmit={this.onSubmit}
       />
     );
   }
 }
 
-CreateLeftingPage.propTypes = {
-  createLefting: React.PropTypes.func.isRequired,
-  addFlashMessage: React.PropTypes.func.isRequired
+ClaimConfirmationContainer.propTypes = {
+  createLefting: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired
 };
 
-export default connect(null, { createLefting, addFlashMessage })(CreateLeftingPage);
+export default connect(null, { createLefting, addFlashMessage })(ClaimConfirmationContainer);
