@@ -1,9 +1,12 @@
 import axios from 'axios';
+
 import config from 'config/development';
+import xmlToJson from 'utils/xmlToJson';
 
 import {
   SET_CLAIM_INFO,
-  RESET_CLAIM_INFO
+  RESET_CLAIM_INFO,
+  BOOK_SEARCH_SUCCESS
 } from './Claim.actionTypes';
 
 export const setClaimInfo = ({ key, value }) => {
@@ -20,19 +23,20 @@ export const resetClaimInfo = () => {
   };
 };
 
-export function searchBooks(query) {
-  const q = 'Ender%27s+Game';
-
+export const searchBooks = query => {
   return dispatch => {
     return axios
-      .delete(`${config.goodreadsApi.url}/search?key=${config.goodreadsApi.key}&q=${q}`)
-      .then(results => {
-        console.log('RESULTS!! HURRA!!!', results);
-        /*
+      .get(`${config.goodreadsApi.url}/search?key=${config.goodreadsApi.key}&q=${query}`)
+      .then(res => {
+        return xmlToJson(res.data);
+      })
+      .then(res => {
+        const results = res.GoodreadsResponse.search[0].results[0].work;
+
         dispatch({
-          type: DELETE_LEFTING_SUCCESS,
-          leftingId
-        });*/
+          type: BOOK_SEARCH_SUCCESS,
+          results
+        });
       });
   };
-}
+};

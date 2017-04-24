@@ -42,7 +42,7 @@ export default Actions.create(
             <Scene key="leftingClaim" component={ClaimConfirmationContainer} title="Lefting Claim Confirmation" />
           </Scene>
           <Scene key="createLefting" initial title="Create" icon={TabIcon} navigationBarStyle={{backgroundColor: colors.primaryDark}} titleStyle={{color: 'white'}}>
-            <Scene key="step1" component={ClaimBookSearchContainer} hideNavBar title="Claim Book Search" />
+            <Scene key="step1" component={ClaimBookSearchContainer} title="Claim Book Search" />
             <Scene key="step2" component={ClaimPicture} hideNavBar={false} title="Claim picture" />
             <Scene key="step3" component={ClaimConfirmationContainer} title="Claim confirmation" />
           </Scene>

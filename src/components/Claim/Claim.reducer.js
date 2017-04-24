@@ -31,7 +31,7 @@ const initialState = fromJS({
 });
 
 export default (state = initialState, action) => {
-  switch(action) {
+  switch(action.type) {
     case SET_CLAIM_INFO:
       return state.setIn(['claim', action.key], action.value);
     case RESET_CLAIM_INFO:

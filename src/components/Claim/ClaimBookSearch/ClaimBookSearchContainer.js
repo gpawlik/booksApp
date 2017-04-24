@@ -33,19 +33,19 @@ class ClaimBookSearchContainer extends React.Component {
     }
   }
 
-  onSearchChange(type, value) {
-    this.setState({ [type]: value });
+  onSearchChange(value) {
+    this.setState({ searchTerm: value });
   }
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.searchBooks();
+    this.props.searchBooks(this.state.searchTerm);
   }
 
   render() {
     return (
       <ClaimBookSearch
-        searchTerm="a"
+        searchTerm={this.state.searchTerm}
         results={this.state.booksDataSource}
         onChange={this.onSearchChange}
         onSubmit={this.onSubmit}

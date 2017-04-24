@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-
+    flex: 1
   },
   sectionTitle: {
     padding: 10,
@@ -11,11 +11,13 @@ export default StyleSheet.create({
     color: '#aaa',
     backgroundColor: '#fafafa'
   },
-  form: {
-
+  searchBox: {
+    padding: 10
   },
-  searchResults: {
-
+  searchInput: {
+    height: 20
+  },
+  resultsBox: {
+    height: 400
   }
-
 });
