@@ -9,7 +9,7 @@ export default () => {
   return (
     <View style={s.contentWrapper}>
       <Text>Make a lefting picture!</Text>
-      <Button onPress={() => Actions.userLeftings()}>done</Button>
+      <Button onPress={() => Actions.step3()}>done</Button>
     </View>
   );
 };

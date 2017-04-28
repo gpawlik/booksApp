@@ -10,8 +10,7 @@ const section = {
 
 export default StyleSheet.create({
   contentWrapper: {
-    flex: 1,
-    justifyContent: 'center'
+
   },
   section: {
     ...section,
@@ -30,7 +29,7 @@ export default StyleSheet.create({
     fontWeight: '600'
   },
   sectionContent: {
-    flexGrow: 1
+
   },
   sectionText: {
     fontWeight: '200',

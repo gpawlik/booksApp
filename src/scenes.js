@@ -34,14 +34,14 @@ export default Actions.create(
 
       <Scene key="tabbar" initial hideNavBar component={NavigationDrawer}>
         <Scene key="main" tabs style={{backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#dedede'}}>
-          <Scene key="leftings" title="Leftings" icon={TabIcon} navigationBarStyle={{backgroundColor: colors.primaryDark}} titleStyle={{color: 'white'}} drawerImage={<MenuIcon />}>
+          <Scene key="leftings" initial title="Leftings" icon={TabIcon} navigationBarStyle={{backgroundColor: colors.primaryDark}} titleStyle={{color: 'white'}} drawerImage={<MenuIcon />}>
             <Scene key="leftingsList" component={LeftingsOverviewContainer} title={translate('leftings.list.title')} />
             <Scene key="lefting" component={LeftingDetailsContainer} title={translate('leftings.profile.title')} />
             <Scene key="leftingHistory" component={LeftingHistory} title="Lefting History" />
             <Scene key="leftingClaimPicture" component={ClaimPicture} title="Lefting Claim Picture" />
             <Scene key="leftingClaim" component={ClaimConfirmationContainer} title="Lefting Claim Confirmation" />
           </Scene>
-          <Scene key="createLefting" initial title="Create" icon={TabIcon} navigationBarStyle={{backgroundColor: colors.primaryDark}} titleStyle={{color: 'white'}}>
+          <Scene key="createLefting" title="Create" icon={TabIcon} navigationBarStyle={{backgroundColor: colors.primaryDark}} titleStyle={{color: 'white'}}>
             <Scene key="step1" component={ClaimBookSearchContainer} title="Claim Book Search" />
             <Scene key="step2" component={ClaimPicture} hideNavBar={false} title="Claim picture" />
             <Scene key="step3" component={ClaimConfirmationContainer} title="Claim confirmation" />

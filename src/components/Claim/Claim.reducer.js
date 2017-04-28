@@ -3,15 +3,16 @@ import { fromJS } from 'immutable';
 import {
   SET_CLAIM_INFO,
   RESET_CLAIM_INFO,
+  SET_CLAIM_BOOK,
   BOOK_SEARCH_SUCCESS
 } from './Claim.actionTypes';
 
 const initialState = fromJS({
   claim: {
-    picture: '',
-    location: '',
-    description: '',
-    bookId: ''
+    pictureUrl: 'http://i0.wp.com/www.myballard.com/wp-content/uploads/photo-152-e1348784901110.jpg',
+    location: '41.222,2.054',
+    comment: 'Some amazing book',
+    bookId: '123456'
   },
   searchForm: {
     title: '',
@@ -20,14 +21,15 @@ const initialState = fromJS({
   },
   book: {
     id: '',
-    title: '',
-    author: '',
+    title: 'The Jungle Book',
+    author: 'James May',
     isbn: '',
     published: '',
     publisher: '',
     pages: ''
   },
-  searchResults: []
+  searchResults: [],
+  isFormValid: false
 });
 
 export default (state = initialState, action) => {
@@ -37,7 +39,24 @@ export default (state = initialState, action) => {
     case RESET_CLAIM_INFO:
       return state.set('claim', initialState.get('claim'));
     case BOOK_SEARCH_SUCCESS:
-      return state.set('searchResults', fromJS(action.results));
+      return state
+        .set('searchResults', fromJS(action.results))
+        .set('book', initialState.get('book'))
+        .set('isFormValid', false);
+    case SET_CLAIM_BOOK:
+    // TODO: some more elegant way to do it?
+      const bookIndex = parseInt(action.index, 10);
+      const results = state.get('searchResults').map(item => {
+        return item.has('selected') ? item.remove('selected') : item;
+      })
+      .map((item, idx) => {
+        return idx === bookIndex ? item.set('selected', true) : item;
+      });
+
+      return state
+        .set('searchResults', results)
+        .set('book', state.getIn(['searchResults', bookIndex]))
+        .set('isFormValid', true);
     default:
       return state;
   }

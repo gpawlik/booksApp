@@ -1,44 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import { Image, MapView, Text, TextInput, View } from 'react-native';
 import Button from 'react-native-button';
 
 import s from './styles';
 
-const ClaimConfirmation = ({ claim, onClaimChange, onSubmit }) => {
+const ClaimConfirmation = ({ claim, book, onSubmit }) => {
   return (
     <View style={s.container}>
       <View style={s.section}>
         <Text style={s.sectionTitle}>
           Claim details
         </Text>
+        <View style={s.topBox}>
+          <Image
+            source={{uri: claim.pictureUrl}}
+            style={s.picture} />
+          <View style={s.bookInfo}>
+            <Text style={s.bookInfoTitle}>{book.title}</Text>
+            <Text style={s.bookInfoAuthor}>{book.author}</Text>
+          </View>
+        </View>
       </View>
 
       <View style={s.section}>
         <Text style={s.sectionTitle}>
-          Book details
+          Book location
         </Text>
-
-        <BookForm
-          onChange={onClaimChange}
-          {...claim}
-          />
-
-        <BookSearch
-          title="something"
-          author="author"
-          isbn="123"
+        <MapView
+          style={s.map}
+          region={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421
+          }}
           />
       </View>
-      <Button onPress={onSubmit}>make a picture</Button>
+
+      <View style={s.section}>
+        <Text style={s.sectionTitle}>
+          Book description
+        </Text>
+        <TextInput
+          style={s.comment}
+          placeholder="Write your comment here... (optional)"
+          multiline />
+      </View>
+      <Button
+        style={s.button}
+        onPress={onSubmit}>
+        Submit!
+      </Button>
     </View>
   );
 };
 
 ClaimConfirmation.propTypes = {
   claim: PropTypes.object.isRequired,
-  onClaimChange: PropTypes.object.isRequired,
-  onSubmit: PropTypes.object.isRequired
+  book: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default ClaimConfirmation;

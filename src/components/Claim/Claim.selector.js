@@ -16,3 +16,8 @@ export const selectSearchResults = () => createSelector(
   selectClaimStore(),
   claimState => claimState.get('searchResults').toJS()
 );
+
+export const selectSearchFormValid = () => createSelector(
+  selectClaimStore(),
+  claimState => claimState.get('isFormValid')
+);

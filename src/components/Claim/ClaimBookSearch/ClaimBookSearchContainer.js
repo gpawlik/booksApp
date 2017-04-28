@@ -6,8 +6,8 @@ import { ListView } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 
 import ClaimBookSearch from './ClaimBookSearch';
-import { searchBooks } from 'components/Claim/Claim.actions';
-import { selectSearchResults } from 'components/Claim/Claim.selector';
+import { searchBooks, setClaimBook } from 'components/Claim/Claim.actions';
+import { selectSearchResults, selectSearchFormValid } from 'components/Claim/Claim.selector';
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
@@ -22,7 +22,8 @@ class ClaimBookSearchContainer extends React.Component {
     };
 
     this.onSearchChange = this.onSearchChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onSelectItem = this.onSelectItem.bind(this);
+    this.onSearch = this.onSearch.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,25 +38,35 @@ class ClaimBookSearchContainer extends React.Component {
     this.setState({ searchTerm: value });
   }
 
-  onSubmit(e) {
+  onSearch(e) {
     e.preventDefault();
     this.props.searchBooks(this.state.searchTerm);
   }
 
+  onSelectItem(value, index) {
+    this.props.setClaimBook(index);
+  }
+
   render() {
+    const { isFormValid } = this.props;
+
     return (
       <ClaimBookSearch
         searchTerm={this.state.searchTerm}
         results={this.state.booksDataSource}
         onChange={this.onSearchChange}
-        onSubmit={this.onSubmit}
+        onSelectItem={this.onSelectItem}
+        onSearch={this.onSearch}
+        onSubmit={() => Actions.step2()}
+        isFormValid={isFormValid}
       />
     );
   }
 }
 
 const mapStateToProps = createStructuredSelector({
-  searchResults: selectSearchResults()
+  searchResults: selectSearchResults(),
+  isFormValid: selectSearchFormValid()
 });
 
 ClaimBookSearchContainer.propTypes = {
@@ -63,4 +74,4 @@ ClaimBookSearchContainer.propTypes = {
   searchResults: PropTypes.array
 };
 
-export default connect(mapStateToProps, { searchBooks })(ClaimBookSearchContainer);
+export default connect(mapStateToProps, { searchBooks, setClaimBook })(ClaimBookSearchContainer);

@@ -1,34 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, TouchableHighlight, View } from 'react-native';
+import Button from 'react-native-button';
+
+import CheckIcon from 'common/components/Icons/CheckIcon';
 
 import s from './styles';
 
-const BookMeta = ({ title, author, imageUrl, publisher, publishDate, pages, type }) => {
+const BookMeta = ({ title, author, imageUrl, publishDate, rating, isSelected }) => {
+  const selectButtonStyle = isSelected ? s.selectButtonActive : s.selectButton;
+
   return (
     <View style={s.container}>
+      <View style={selectButtonStyle}>
+        <CheckIcon color="#fff" />
+      </View>
       <Image
         style={s.image}
         source={{ uri: imageUrl }}
         />
       <View>
         <Text style={s.info}>
-          <Text style={s.infoLabel}>{title}</Text>
+          <Text style={s.bookTitle}>{title}</Text>
         </Text>
         <Text style={s.info}>
-          <Text style={s.infoLabel}>{author}</Text>
-        </Text>
-        <Text style={s.info}>
-          <Text style={s.infoLabel}>Publisher:</Text> <Text style={s.infoText}>{publisher}</Text>
+          <Text style={s.bookAuthor}>{author}</Text>
         </Text>
         <Text style={s.info}>
           <Text style={s.infoLabel}>Published:</Text> <Text style={s.infoText}>{publishDate}</Text>
         </Text>
         <Text style={s.info}>
-          <Text style={s.infoLabel}>Pages:</Text> <Text style={s.infoText}>{pages}</Text>
-        </Text>
-        <Text style={s.info}>
-          <Text style={s.infoLabel}>Type:</Text> <Text style={s.infoText}>{type}</Text>
+          <Text style={s.infoLabel}>Rating:</Text> <Text style={s.infoText}>{rating}</Text>
         </Text>
       </View>
     </View>
@@ -36,12 +38,12 @@ const BookMeta = ({ title, author, imageUrl, publisher, publishDate, pages, type
 };
 
 BookMeta.propTypes = {
+  title: PropTypes.string,
+  author: PropTypes.string,
   imageUrl: PropTypes.string,
-  publisher: PropTypes.string,
   publishDate: PropTypes.string,
-  pages: PropTypes.number,
-  type: PropTypes.string,
-  isbn: PropTypes.string
+  rating: PropTypes.string,
+  isSelected: PropTypes.bool
 };
 
 export default BookMeta;

@@ -75,9 +75,9 @@ solution: react-native upgrade
 [ ] make maps work android
 [ ] setup map component with markers
 [ ] setup camera component
-[ ] make searches via Goodreads API
+[x] make searches via Goodreads API
 
-[ ] visual: claim details
+[x] visual: claim details
 [x] visual: settings scene
 [ ] visual: navigation consistency
 [x] visual: about scene

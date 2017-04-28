@@ -6,6 +6,7 @@ import xmlToJson from 'utils/xmlToJson';
 import {
   SET_CLAIM_INFO,
   RESET_CLAIM_INFO,
+  SET_CLAIM_BOOK,
   BOOK_SEARCH_SUCCESS
 } from './Claim.actionTypes';
 
@@ -20,6 +21,13 @@ export const setClaimInfo = ({ key, value }) => {
 export const resetClaimInfo = () => {
   return {
     type: RESET_CLAIM_INFO
+  };
+};
+
+export const setClaimBook = index => {
+  return {
+    type: SET_CLAIM_BOOK,
+    index
   };
 };
 

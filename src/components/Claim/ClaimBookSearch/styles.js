@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import colors from 'config/colors';
+
 export default StyleSheet.create({
   container: {
     flex: 1
@@ -11,13 +13,15 @@ export default StyleSheet.create({
     color: '#aaa',
     backgroundColor: '#fafafa'
   },
-  searchBox: {
-    padding: 10
-  },
-  searchInput: {
-    height: 20
-  },
   resultsBox: {
     height: 400
+  },
+  searchButton: {
+    backgroundColor: colors.primaryDark,
+    color: '#fff',
+    margin: 10,
+    padding: 10,
+    borderRadius: 5,
+    overflow: 'hidden'
   }
 });

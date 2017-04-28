@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import colors from 'config/colors';
+
 const metaItem = {
   padding: 15,
   flexGrow: 1,
@@ -27,7 +29,7 @@ export default StyleSheet.create({
     flexBasis: 0
   },
   buttonCheckout: {
-    backgroundColor: '#27ae60',
+    backgroundColor: colors.primaryGreen,
     color: '#fff',
     padding: 10,
     fontSize: 16,
