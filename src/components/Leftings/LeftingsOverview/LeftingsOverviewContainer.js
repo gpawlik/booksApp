@@ -6,7 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import { getLeftings } from './../Leftings.actions';
 import { selectLeftings } from 'components/Leftings/Leftings.selector';
 import LeftingsOverview from './LeftingsOverview';
-import NavBarApp from 'components/Navigation/NavBarApp/NavBarApp';
+import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
 
 class LeftingsOverviewContainer extends React.Component {
   constructor(props) {
@@ -68,7 +68,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 LeftingsOverviewContainer.renderNavigationBar = () => {
-  return <NavBarApp />;
+  return <NavBarMain />;
 };
 
 export default connect(mapStateToProps, { getLeftings })(LeftingsOverviewContainer);

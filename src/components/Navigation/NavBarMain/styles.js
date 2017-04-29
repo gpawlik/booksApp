@@ -1,12 +1,12 @@
 import {
   Platform,
-  I18nManager,
   StyleSheet
 } from 'react-native';
 
+import colors from 'config/colors';
+
 export default StyleSheet.create({
-  header: {
-    backgroundColor: '#EFEFF2',
+  container: {
     paddingTop: 0,
     top: 0,
     ...Platform.select({
@@ -26,23 +26,40 @@ export default StyleSheet.create({
     borderBottomColor: '#828287',
     position: 'absolute'
   },
-  rightButton: {
-    height: 37,
-    position: 'absolute',
+  content: {
+    flex: 1,
+    borderTopColor: '#ccc',
+    backgroundColor: '#EFEFF2',
+    alignSelf: 'stretch',
+    justifyContent: 'center',
     ...Platform.select({
       ios: {
-        top: 22
+        borderTopWidth: 20
       },
       android: {
-        top: 10
+        borderTopWidth: 12
       },
       windows: {
-        top: 8
+        borderTopWidth: 10
       }
-    }),
-    right: 2,
-    padding: 8,
-    flexDirection: 'row',
-    transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }]
+    })
+  },
+  logo: {
+    alignSelf: 'center'
+  },
+  title: {
+    fontSize: 18
+  },
+  backButton: {
+    position: 'absolute',
+    top: 14,
+    left: 10
+  },
+  rightButton: {
+    position: 'absolute',
+    top: 4,
+    right: 10,
+    height: 37,
+    padding: 8
   }
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import LeftingHistory from './LeftingHistory';
-import NavBarApp from 'components/Navigation/NavBarApp/NavBarApp';
+import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
 
 class LeftingHistoryContainer extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class LeftingHistoryContainer extends React.Component {
 }
 
 LeftingHistoryContainer.renderNavigationBar = ({ title }) => {
-  return <NavBarApp title={title} hasBackButton />;
+  return <NavBarMain title={title} hasBackButton />;
 };
 
 export default connect(null, null)(LeftingHistoryContainer);

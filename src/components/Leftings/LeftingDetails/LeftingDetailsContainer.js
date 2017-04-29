@@ -8,7 +8,7 @@ import LeftingDetails from './LeftingDetails';
 import Preloader from 'common/components/Preloader/Preloader';
 import { getLefting } from 'components/Leftings/Leftings.actions';
 import { selectLefting } from 'components/Leftings/Leftings.selector';
-import NavBarApp from 'components/Navigation/NavBarApp/NavBarApp';
+import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
 
 class LeftingDetailsContainer extends React.Component {
 
@@ -49,7 +49,7 @@ LeftingDetailsContainer.propTypes = {
 };
 
 LeftingDetailsContainer.renderNavigationBar = ({ title }) => {
-  return <NavBarApp title={title} hasBackButton />;
+  return <NavBarMain title={title} hasBackButton />;
 };
 
 const mapStateToProps = createStructuredSelector({

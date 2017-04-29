@@ -6,7 +6,7 @@ import { ListView } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 
 import ClaimBookSearch from './ClaimBookSearch';
-import NavBarApp from 'components/Navigation/NavBarApp/NavBarApp';
+import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
 import { searchBooks, setClaimBook } from 'components/Claim/Claim.actions';
 import { selectSearchResults, selectSearchFormValid } from 'components/Claim/Claim.selector';
 
@@ -76,7 +76,7 @@ ClaimBookSearchContainer.propTypes = {
 };
 
 ClaimBookSearchContainer.renderNavigationBar = ({ title }) => {
-  return <NavBarApp title={title} />;
+  return <NavBarMain title={title} />;
 };
 
 export default connect(mapStateToProps, { searchBooks, setClaimBook })(ClaimBookSearchContainer);

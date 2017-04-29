@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 
 import Settings from './Settings';
-import NavBarGeneral from 'components/Navigation/NavBarGeneral/NavBarGeneral';
+import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
 import { logout } from 'components/Auth/Auth.actions';
 
 class SettingsContainer extends React.Component {
@@ -25,7 +26,7 @@ class SettingsContainer extends React.Component {
 }
 
 SettingsContainer.renderNavigationBar = () => {
-  return <NavBarGeneral hasCloseButton />;
+  return <NavBarMain hasCloseButton onClose={() => Actions.profile()} />;
 };
 
 SettingsContainer.propTypes = {

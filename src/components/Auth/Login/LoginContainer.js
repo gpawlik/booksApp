@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { createStructuredSelector } from 'reselect';
 
 import Login from './Login';
-import NavBarApp from 'components/Navigation/NavBarApp/NavBarApp';
+import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
 import { login } from 'components/Auth/Auth.actions';
 import { selectIsAuthenticated } from 'components/Auth/Auth.selector';
 import validateInput from 'utils/validations/login';
@@ -81,7 +81,7 @@ LoginContainer.propTypes = {
 };
 
 LoginContainer.renderNavigationBar = ({ title }) => {
-  return <NavBarApp title={title} />;
+  return <NavBarMain title={title} />;
 };
 
 export default connect(mapStateToProps, { login })(LoginContainer);

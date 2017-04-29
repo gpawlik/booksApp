@@ -7,7 +7,7 @@ import { createStructuredSelector } from 'reselect';
 import UserProfile from './UserProfile';
 
 import Preloader from 'common/components/Preloader/Preloader';
-import NavBarGeneral from 'components/Navigation/NavBarGeneral/NavBarGeneral';
+import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
 import { getUser } from 'components/User/Users.actions';
 import { selectUser } from 'components/User/Users.selector';
 import { selectAuthUser, selectIsAuthenticated } from 'components/Auth/Auth.selector';
@@ -66,7 +66,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 UserProfileContainer.renderNavigationBar = () => {
-  return <NavBarGeneral />;
+  return <NavBarMain hasSettingsButton />;
 };
 
 export default connect(mapStateToProps, { getUser })(UserProfileContainer);

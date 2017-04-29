@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import { createStructuredSelector } from 'reselect';
 
 import ClaimConfirmation from './ClaimConfirmation';
-import NavBarApp from 'components/Navigation/NavBarApp/NavBarApp';
+import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
 import { selectClaim, selectClaimBook } from 'components/Claim/Claim.selector';
 import { createLefting } from 'components/Leftings/Leftings.actions';
 import { addFlashMessage } from 'common/Flash/Flash.actions';
@@ -68,7 +68,7 @@ ClaimConfirmationContainer.propTypes = {
 };
 
 ClaimConfirmationContainer.renderNavigationBar = ({ title }) => {
-  return <NavBarApp title={title} hasBackButton />;
+  return <NavBarMain title={title} hasBackButton />;
 };
 
 export default connect(mapStateToProps, { createLefting, addFlashMessage })(ClaimConfirmationContainer);

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 
 import Register from './Register';
-import NavBarApp from 'components/Navigation/NavBarApp/NavBarApp';
+import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
 import { userSignupRequest, isUserExists } from './Register.actions';
 import { addFlashMessage } from 'common/Flash/Flash.actions';
 import validateInput from 'utils/validations/signup';
@@ -107,7 +107,7 @@ RegisterContainer.propTypes = {
 };
 
 RegisterContainer.renderNavigationBar = ({ title }) => {
-  return <NavBarApp title={title} hasBackButton />;
+  return <NavBarMain title={title} hasBackButton />;
 };
 
 export default connect(null, { userSignupRequest, isUserExists, addFlashMessage })(RegisterContainer);
