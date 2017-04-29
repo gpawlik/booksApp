@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Button from 'react-native-button';
 
 import TextFieldGroup from 'common/components/TextFieldGroup/TextFieldGroup';
@@ -15,7 +15,7 @@ const Register = ({
   onChange, onSubmit
 }) => {
   return(
-    <View style={s.container}>
+    <ScrollView contentContainerStyle={s.container}>
       <SignupIcon />
       <View style={s.formBox}>
         <TextFieldGroup
@@ -65,7 +65,7 @@ const Register = ({
           {translate('signup.form.button')}
         </Button>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

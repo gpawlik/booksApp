@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 
@@ -11,7 +11,7 @@ import s from './styles';
 
 const Login = ({ identifier, password, errors, isLoading, onChange, onSubmit }) => {
   return(
-    <View style={s.container}>
+    <ScrollView contentContainerStyle={s.container}>
       <LoginIcon />
       <Text>{ errors.form }</Text>
       <View style={s.formBox}>
@@ -51,7 +51,7 @@ const Login = ({ identifier, password, errors, isLoading, onChange, onSubmit }) 
           Click here to register
         </Button>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

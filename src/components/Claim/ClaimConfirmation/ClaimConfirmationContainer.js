@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectClaim, selectClaimBook } from 'components/Claim/Claim.selector';
 import ClaimConfirmation from './ClaimConfirmation';
+import NavBarApp from 'components/Navigation/NavBarApp/NavBarApp';
+import { selectClaim, selectClaimBook } from 'components/Claim/Claim.selector';
 import { createLefting } from 'components/Leftings/Leftings.actions';
 import { addFlashMessage } from 'common/Flash/Flash.actions';
 import translate from 'utils/translate';
@@ -64,6 +65,10 @@ ClaimConfirmationContainer.propTypes = {
   book: PropTypes.object.isRequired,
   createLefting: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired
+};
+
+ClaimConfirmationContainer.renderNavigationBar = ({ title }) => {
+  return <NavBarApp title={title} hasBackButton />;
 };
 
 export default connect(mapStateToProps, { createLefting, addFlashMessage })(ClaimConfirmationContainer);

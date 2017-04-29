@@ -32,8 +32,8 @@ const ClaimBookSearch = ({
             enableEmptySections
             dataSource={results}
             renderRow={({
-              id, best_book, original_publication_year,
-              average_rating, selected
+              title, author, imageUrl,
+              publishDate, rating, selected
             }, type, index) => {
               return (
                 <TouchableHighlight
@@ -41,11 +41,11 @@ const ClaimBookSearch = ({
                   underlayColor="#dedede">
                   <View>
                     <BookSearchItem
-                      title={best_book[0].title[0]}
-                      author={best_book[0].author[0].name[0]}
-                      imageUrl={best_book[0].small_image_url[0]}
-                      publishDate={original_publication_year[0]._}
-                      rating={average_rating[0]}
+                      title={title}
+                      author={author}
+                      imageUrl={imageUrl}
+                      publishDate={publishDate}
+                      rating={rating}
                       isSelected={selected}
                       />
                   </View>

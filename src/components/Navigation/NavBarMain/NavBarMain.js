@@ -3,8 +3,7 @@ import Button from 'react-native-button';
 import { View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-import CogIcon from 'common/components/Icons/CogIcon';
-import CrossIcon from 'common/components/Icons/CrossIcon';
+import { CogIcon, CrossIcon } from 'common/components/Icons';
 import s from './styles';
 
 export default ({ hasCloseButton }) => {

@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { createStructuredSelector } from 'reselect';
 
 import Login from './Login';
+import NavBarApp from 'components/Navigation/NavBarApp/NavBarApp';
 import { login } from 'components/Auth/Auth.actions';
 import { selectIsAuthenticated } from 'components/Auth/Auth.selector';
 import validateInput from 'utils/validations/login';
@@ -77,6 +78,10 @@ const mapStateToProps = createStructuredSelector({
 LoginContainer.propTypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired
+};
+
+LoginContainer.renderNavigationBar = ({ title }) => {
+  return <NavBarApp title={title} />;
 };
 
 export default connect(mapStateToProps, { login })(LoginContainer);

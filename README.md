@@ -44,11 +44,15 @@ npm install
 react-native upgrade
 react-native link
 
+- add and remove fonts: https://medium.com/@danielskripnik/how-to-add-and-remove-custom-fonts-in-react-native-b2830084b0e4
+
 - make native-maps work without error:
 https://github.com/airbnb/react-native-maps/issues/1213
 https://github.com/airbnb/react-native-maps/pull/1224/commits
 
 ?? https://github.com/mapbox/react-native-mapbox-gl
+
+- splash screen (use when link is implemented: https://github.com/react-native-component/react-native-smart-splash-screen)
 
 - Flexbox - 2 equally width items: flexGrow: 1 (equal width), flexBasis: 0 (no initial width)
 
@@ -59,6 +63,7 @@ solution: react-native upgrade
 
 # Linked libraries
 - react-native-svg
+- react-native-maps
 
 # Logo?
 - http://www.dafont.com/snowboarding-only.font?fpp=100&psize=l&text=BooksFinder

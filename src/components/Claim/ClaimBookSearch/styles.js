@@ -14,7 +14,7 @@ export default StyleSheet.create({
     backgroundColor: '#fafafa'
   },
   resultsBox: {
-    height: 400
+    height: 300
   },
   searchButton: {
     backgroundColor: colors.primaryDark,

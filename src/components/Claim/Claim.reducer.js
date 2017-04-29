@@ -21,8 +21,8 @@ const initialState = fromJS({
   },
   book: {
     id: '',
-    title: 'The Jungle Book',
-    author: 'James May',
+    title: '',
+    author: '',
     isbn: '',
     published: '',
     publisher: '',

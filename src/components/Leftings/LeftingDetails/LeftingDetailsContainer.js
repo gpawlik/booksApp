@@ -8,6 +8,7 @@ import LeftingDetails from './LeftingDetails';
 import Preloader from 'common/components/Preloader/Preloader';
 import { getLefting } from 'components/Leftings/Leftings.actions';
 import { selectLefting } from 'components/Leftings/Leftings.selector';
+import NavBarApp from 'components/Navigation/NavBarApp/NavBarApp';
 
 class LeftingDetailsContainer extends React.Component {
 
@@ -45,6 +46,10 @@ class LeftingDetailsContainer extends React.Component {
 LeftingDetailsContainer.propTypes = {
   lefting: React.PropTypes.object.isRequired,
   getLefting: React.PropTypes.func.isRequired
+};
+
+LeftingDetailsContainer.renderNavigationBar = ({ title }) => {
+  return <NavBarApp title={title} hasBackButton />;
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -37,7 +37,8 @@ export default StyleSheet.create({
     color: '#dedede'
   },
   map: {
-    height: 120
+    height: 120,
+    alignSelf: 'stretch'
   },
   comment: {
     height: 100,

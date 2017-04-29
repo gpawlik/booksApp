@@ -9,6 +9,7 @@ import {
   SET_CLAIM_BOOK,
   BOOK_SEARCH_SUCCESS
 } from './Claim.actionTypes';
+import { transformBookData } from 'utils/transform';
 
 export const setClaimInfo = ({ key, value }) => {
   return {
@@ -39,11 +40,9 @@ export const searchBooks = query => {
         return xmlToJson(res.data);
       })
       .then(res => {
-        const results = res.GoodreadsResponse.search[0].results[0].work;
-
         dispatch({
           type: BOOK_SEARCH_SUCCESS,
-          results
+          results: transformBookData(res.GoodreadsResponse.search[0].results[0].work)
         });
       });
   };
