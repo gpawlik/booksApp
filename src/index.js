@@ -11,6 +11,9 @@ import { setCurrentUser } from 'components/User/Users.actions';
 import store from './store';
 import scenes from './scenes';
 
+/* Allow XHR requests in devtools */
+GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;
+
 const getSceneStyle = (props, computedProps) => {
   const style = {
     flex: 1,

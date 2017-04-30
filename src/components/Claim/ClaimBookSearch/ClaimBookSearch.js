@@ -12,21 +12,26 @@ const ClaimBookSearch = ({
   onSelectItem, onSearch, onSubmit,
   isFormValid
 }) => {
+  const searchBoxText = (
+    <View style={s.searchBoxInfo}>
+      <Text style={s.searchBoxText}>Use the searchbox above to find the book you are going to leave...</Text>
+    </View>
+  );
+
   return (
     <View style={s.container}>
-      <View style={s.section}>
+      <BookSearchBox
+        searchTerm={searchTerm}
+        placeholder="Search by title, author or ISBN"
+        onChange={onChange}
+        onSearch={onSearch}
+        />
 
-        <BookSearchBox
-          searchTerm={searchTerm}
-          placeholder="Search by title, author or ISBN"
-          onChange={onChange}
-          onSearch={onSearch}
-          />
+      <Text style={s.sectionTitle}>
+        Book results
+      </Text>
 
-        <Text style={s.sectionTitle}>
-          Book results
-        </Text>
-
+      <View style={s.resultsContainer}>
         <ScrollView style={s.resultsBox}>
           <ListView
             enableEmptySections
@@ -54,7 +59,9 @@ const ClaimBookSearch = ({
             }}
           />
         </ScrollView>
+        {!results._cachedRowCount && searchBoxText}
       </View>
+
       <Button
         onPress={onSubmit}
         style={s.searchButton}

@@ -1,15 +1,14 @@
-import axios from 'axios';
 import {
   SET_CURRENT_USER,
   UNSET_CURRENT_USER,
-  GET_USERS_SUCCESS,
-  GET_USERS_FAILURE,
+  EDIT_SETTINGS_FORM,
+  GET_USER_PROFILE_REQUEST,
   GET_USER_PROFILE_SUCCESS,
   GET_USER_PROFILE_FAILURE,
+  EDIT_USER_PROFILE_REQUEST,
   EDIT_USER_PROFILE_SUCCESS,
   EDIT_USER_PROFILE_FAILURE
 } from './Users.actionTypes';
-import config from 'config/development';
 
 export const setCurrentUser = user => {
   return {
@@ -24,64 +23,49 @@ export const unsetCurrentUser = () => {
   };
 };
 
-export const getUsers = () => {
-  return dispatch => {
-    return axios
-      .get(`${config.apiServer}/api/users`)
-      .then(res => {
-        dispatch({
-          type: GET_USERS_SUCCESS,
-          users: res.data
-        });
-      })
-      .catch(error => {
-        dispatch({
-          type: GET_USERS_FAILURE,
-          error: error.response.data
-        });
-      });
+export const editSettings = ({ id, value }) => {
+  return {
+    type: EDIT_SETTINGS_FORM,
+    id,
+    value
   };
 };
 
-export const getUser = userId => {
-  return dispatch => {
-    return axios
-      .get(`${config.apiServer}/api/users/${userId}`)
-      .then(res => {
-        dispatch({
-          type: GET_USER_PROFILE_SUCCESS,
-          user: res.data.user
-        });
-      })
-      .catch(error => {
-        dispatch({
-          type: GET_USER_PROFILE_FAILURE,
-          error: error.response.data
-        });
-      });
+export const updateUserProfile = () => {
+  return {
+    type: EDIT_USER_PROFILE_REQUEST
   };
 };
 
-export const editUser = ({ id, username, email, location, interests }) => {
-  return dispatch => {
-    return axios
-      .put(`${config.apiServer}/api/users/${id}`, {
-        username,
-        email,
-        location,
-        interests
-      })
-      .then(res => {
-        dispatch({
-          type: EDIT_USER_PROFILE_SUCCESS,
-          user: res.data.user
-        });
-      })
-      .catch(error => {
-        dispatch({
-          type: EDIT_USER_PROFILE_FAILURE,
-          error: error.response.data
-        });
-      });
+export const fetchUser = user => {
+  return {
+    type: GET_USER_PROFILE_REQUEST,
+    user
+  };
+};
+
+export const fetchSuccess = user => {
+  return {
+    type: GET_USER_PROFILE_SUCCESS,
+    user
+  };
+};
+
+export const fetchFailure = error => {
+  return {
+    type: GET_USER_PROFILE_FAILURE,
+    error
+  };
+};
+
+export const updateSuccess = () => {
+  return {
+    type: EDIT_USER_PROFILE_SUCCESS
+  };
+};
+
+export const updateFailure = () => {
+  return {
+    type: EDIT_USER_PROFILE_FAILURE
   };
 };

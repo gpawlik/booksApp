@@ -80,11 +80,12 @@ solution: react-native upgrade
 [ ] make maps work android
 [ ] setup map component with markers
 [ ] setup camera component
+[ ] setup settings data flow
 [x] make searches via Goodreads API
 
 [x] visual: claim details
 [x] visual: settings scene
-[ ] visual: navigation consistency
+[x] visual: navigation consistency
 [x] visual: about scene
 [x] visual: book section in details
 
@@ -97,3 +98,7 @@ PROS
 CONS
 # no long term prevision of support from FB
 # 670 dependencies
+
+# Allow XHR requests in dev tools
+GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_session" --disable-web-security

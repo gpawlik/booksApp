@@ -4,7 +4,7 @@ import { Switch, Text, TextInput, View } from 'react-native';
 
 import s from './styles';
 
-const SettingsItem = ({ label, type, value, onChange }) => {
+const SettingsItem = ({ label, type, value, name, onChange }) => {
   let Handler, handlerStyle;
 
   switch (type) {
@@ -30,7 +30,7 @@ const SettingsItem = ({ label, type, value, onChange }) => {
         <Handler
           style={handlerStyle}
           value={value}
-          onChange={onChange}
+          onChange={onChange.bind(this, name)}
         />
       </View>
     </View>
@@ -44,7 +44,8 @@ SettingsItem.propTypes = {
     PropTypes.string,
     PropTypes.number,
     PropTypes.bool
-  ]).isRequired,
+  ]),
+  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired
 };
 

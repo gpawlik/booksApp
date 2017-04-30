@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 import { ChevronIcon, CogIcon, CrossIcon, Logo } from 'common/components/Icons';
 import s from './styles';
 
-const NavBarMain = ({ hasBackButton, hasSettingsButton, hasCloseButton, onClose }) => {
+const NavBarMain = ({ hasBackButton, hasSettingsButton, hasCloseButton, hasActionButton, actionText, onClose, onAction }) => {
   const backButton = (
     <TouchableOpacity style={s.backButton} onPress={() => Actions.pop()}>
       <ChevronIcon />
@@ -22,6 +22,11 @@ const NavBarMain = ({ hasBackButton, hasSettingsButton, hasCloseButton, onClose 
       <CrossIcon />
     </TouchableOpacity>
   );
+  const actionButton = (
+    <TouchableOpacity style={s.rightButton} onPress={onAction}>
+      <Text>{actionText}</Text>
+    </TouchableOpacity>
+  );
 
   return (
     <View style={s.container}>
@@ -30,6 +35,7 @@ const NavBarMain = ({ hasBackButton, hasSettingsButton, hasCloseButton, onClose 
         {hasBackButton && backButton}
         {hasSettingsButton && settingsButton}
         {hasCloseButton && closeButton}
+        {hasActionButton && actionButton}
       </View>
     </View>
   );
@@ -39,7 +45,10 @@ NavBarMain.propTypes = {
   hasBackButton: PropTypes.bool,
   hasSettingsButton: PropTypes.bool,
   hasCloseButton: PropTypes.bool,
-  onclose: PropTypes.func
+  hasActionButton: PropTypes.bool,
+  actionText: PropTypes.string,
+  onClose: PropTypes.func,
+  onAction: PropTypes.func
 };
 
 export default NavBarMain;

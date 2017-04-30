@@ -8,17 +8,19 @@ import UserProfile from './UserProfile';
 
 import Preloader from 'common/components/Preloader/Preloader';
 import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
-import { getUser } from 'components/User/Users.actions';
-import { selectUser } from 'components/User/Users.selector';
-import { selectAuthUser, selectIsAuthenticated } from 'components/Auth/Auth.selector';
+import { fetchUser } from 'components/User/Users.actions';
+import {
+  selectUser,
+  selectIsLoading
+} from 'components/User/Users.selector';
+import {
+  selectAuthUser,
+  selectIsAuthenticated
+} from 'components/Auth/Auth.selector';
 
 class UserProfileContainer extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isLoading: true
-    };
   }
 
   componentDidMount() {
@@ -40,9 +42,7 @@ class UserProfileContainer extends React.Component {
   }
 
   fetchUserData(userId) {
-    this.props.getUser(userId).then(() => {
-      this.setState({ isLoading: false });
-    });
+    this.props.onFetchUser(userId);
   }
 
   render() {
@@ -50,7 +50,7 @@ class UserProfileContainer extends React.Component {
 
     return (
       <View>
-        {this.state.isLoading && <Preloader />}
+        {this.props.isLoading && <Preloader />}
         <UserProfile
           user={user}
           />
@@ -62,11 +62,20 @@ class UserProfileContainer extends React.Component {
 const mapStateToProps = createStructuredSelector({
   user: selectUser(),
   authUser: selectAuthUser(),
-  isAuthenticated: selectIsAuthenticated()
+  isAuthenticated: selectIsAuthenticated(),
+  isLoading: selectIsLoading()
 });
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchUser: id => {
+      dispatch(fetchUser(id));
+    }
+  };
+};
 
 UserProfileContainer.renderNavigationBar = () => {
   return <NavBarMain hasSettingsButton />;
 };
 
-export default connect(mapStateToProps, { getUser })(UserProfileContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfileContainer);

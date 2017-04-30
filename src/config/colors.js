@@ -5,3 +5,8 @@ export default {
   secondaryLight: '#ccc',
   primaryGreen: '#27ae60'
 };
+
+export const RED = '#e65649';
+export const GREEN = '#27ae60';
+export const WHITE = '#FFF';
+export const DEFAULT = '#000';

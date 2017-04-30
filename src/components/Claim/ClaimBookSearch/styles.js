@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import colors from 'config/colors';
+import { RED } from 'config/colors';
 
 export default StyleSheet.create({
   container: {
@@ -13,11 +13,34 @@ export default StyleSheet.create({
     color: '#aaa',
     backgroundColor: '#fafafa'
   },
+  resultsContainer: {
+    flex: 1,
+    marginBottom: 60
+  },
   resultsBox: {
-    height: 300
+
+  },
+  searchBoxInfo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignContent: 'center',
+    padding: 15
+  },
+  searchBoxText: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: '#666'
   },
   searchButton: {
-    backgroundColor: colors.primaryDark,
+    position: 'absolute',
+    bottom: 10,
+    left: 0,
+    right: 0,
+    backgroundColor: RED,
     color: '#fff',
     margin: 10,
     padding: 10,

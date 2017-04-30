@@ -1,33 +1,35 @@
 import { fromJS } from 'immutable';
 import {
-  GET_USERS_SUCCESS,
-  GET_USERS_FAILURE,
   GET_USER_PROFILE_SUCCESS,
   GET_USER_PROFILE_FAILURE,
   EDIT_USER_PROFILE_SUCCESS,
   EDIT_USER_PROFILE_FAILURE,
-  UNSET_CURRENT_USER
+  UNSET_CURRENT_USER,
+  EDIT_SETTINGS_FORM
 } from './Users.actionTypes';
 
 const initialState = fromJS({
-  users: [],
-  user: {}
+  user: {},
+  userForm: {},
+  isLoading: true
 });
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case GET_USERS_SUCCESS:
-      return state.set('users', fromJS(action.users));
     case GET_USER_PROFILE_SUCCESS:
-      return state.set('user', fromJS(action.user));
+      return state
+        .set('user', fromJS(action.user))
+        .set('userForm', fromJS(action.user))
+        .set('isLoading', false);
+    case GET_USER_PROFILE_FAILURE:
+      return state
+        .set('isLoading', false);
     case UNSET_CURRENT_USER:
       return state.set('user', fromJS({}));
+    case EDIT_SETTINGS_FORM:
+      return state.setIn(['userForm', action.id], action.value);
     case EDIT_USER_PROFILE_SUCCESS:
-      const editedUserIndex = state.get('users').findIndex(obj => obj.get('_id') === action.user._id);
-
-      return state.setIn(['users', editedUserIndex], action.user);
-    case GET_USERS_FAILURE:
-    case GET_USER_PROFILE_FAILURE:
+      return state.set('user', fromJS(action.user));
     case EDIT_USER_PROFILE_FAILURE:
     default:
       return state;

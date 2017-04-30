@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 import Button from 'react-native-button';
 
@@ -6,7 +7,17 @@ import SettingsItem from 'components/Settings/SettingsItem/SettingsItem';
 
 import s from './styles';
 
-export default ({ onLogout }) => {
+const Settings = ({ user, onChange, onLogout }) => {
+  const {
+    firstName,
+    lastName,
+    username,
+    email,
+    location,
+    allowEmailNotifications,
+    allowPushNotifications
+   } = user;
+
   return (
     <View style={s.contentWrapper}>
       <View style={s.section}>
@@ -15,26 +26,30 @@ export default ({ onLogout }) => {
           <SettingsItem
             label="Picture"
             type="picture"
+            name="picture"
             value=""
-            onChange={() => {}}
+            onChange={onChange}
             />
           <SettingsItem
             label="Username"
-            value="John Doe"
+            value={username}
+            name="username"
             type="input"
-            onChange={() => {}}
+            onChange={onChange}
             />
           <SettingsItem
             label="E-mail"
-            value="johndoe@gmail.com"
+            value={email}
+            name="email"
             type="input"
-            onChange={() => {}}
+            onChange={onChange}
           />
           <SettingsItem
             label="Location"
-            value="Barcelona, Spain"
+            value={location}
+            name="location"
             type="input"
-            onChange={() => {}}
+            onChange={onChange}
           />
         </View>
       </View>
@@ -44,14 +59,16 @@ export default ({ onLogout }) => {
           <SettingsItem
             label="Email notifications"
             type="switch"
-            value={false}
-            onChange={() => {}}
+            value={allowEmailNotifications}
+            name="allowEmailNotifications"
+            onChange={onChange}
             />
           <SettingsItem
             label="App notifications"
             type="switch"
-            value={true}
-            onChange={() => {}}
+            value={allowPushNotifications}
+            name="allowPushNotifications"
+            onChange={onChange}
             />
         </View>
       </View>
@@ -61,3 +78,11 @@ export default ({ onLogout }) => {
     </View>
   );
 };
+
+Settings.propTypes = {
+  user: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired
+};
+
+export default Settings;

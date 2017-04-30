@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { createStructuredSelector } from 'reselect';
 
 import EditUserProfileForm from './EditUserProfileForm';
-import { getUser, editUser } from 'components/User/Users.actions';
+import { editUser } from 'components/User/Users.actions';
 import { addFlashMessage } from 'common/Flash/Flash.actions';
 import { selectUser } from 'components/User/Users.selector';
 import translate from 'utils/translate';
@@ -90,7 +90,6 @@ class EditProfileContainer extends React.Component {
 }
 
 EditProfileContainer.propTypes = {
-  getUser: React.PropTypes.func.isRequired,
   editUser: React.PropTypes.func.isRequired,
   addFlashMessage: React.PropTypes.func.isRequired
 };
@@ -99,4 +98,4 @@ const mapStateToProps = createStructuredSelector({
   user: selectUser()
 });
 
-export default connect(mapStateToProps, { getUser, editUser, addFlashMessage })(EditProfileContainer);
+export default connect(mapStateToProps, { editUser, addFlashMessage })(EditProfileContainer);
