@@ -36,7 +36,7 @@ class UserProfileContainer extends React.Component {
   componentWillReceiveProps(nextProps) {
     const { isAuthenticated } = nextProps;
 
-    if(this.props.isAuthenticated !== isAuthenticated && !isAuthenticated) {
+    if(!isAuthenticated) {
       Actions.login();
     }
   }
@@ -50,10 +50,10 @@ class UserProfileContainer extends React.Component {
 
     return (
       <View>
-        {this.props.isLoading && <Preloader />}
         <UserProfile
           user={user}
           />
+        {this.props.isLoading && <Preloader />}
       </View>
     );
   }

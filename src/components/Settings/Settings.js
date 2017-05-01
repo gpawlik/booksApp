@@ -7,10 +7,8 @@ import SettingsItem from 'components/Settings/SettingsItem/SettingsItem';
 
 import s from './styles';
 
-const Settings = ({ user, onChange, onLogout }) => {
+const Settings = ({ user, onChange, onLogout, onSave }) => {
   const {
-    firstName,
-    lastName,
     username,
     email,
     location,
@@ -75,6 +73,9 @@ const Settings = ({ user, onChange, onLogout }) => {
       <View style={s.section}>
         <Button style={s.logoutButton} onPress={onLogout}>{'Logout'.toUpperCase()}</Button>
       </View>
+      <View style={s.section}>
+        <Button style={s.logoutButton} onPress={onSave}>{'Save'.toUpperCase()}</Button>
+      </View>
     </View>
   );
 };
@@ -82,7 +83,8 @@ const Settings = ({ user, onChange, onLogout }) => {
 Settings.propTypes = {
   user: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired
+  onLogout: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired
 };
 
 export default Settings;

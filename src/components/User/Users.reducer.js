@@ -29,7 +29,9 @@ export default (state = initialState, action) => {
     case EDIT_SETTINGS_FORM:
       return state.setIn(['userForm', action.id], action.value);
     case EDIT_USER_PROFILE_SUCCESS:
-      return state.set('user', fromJS(action.user));
+      return state
+        .set('user', fromJS(action.user))
+        .set('userForm', fromJS(action.user));
     case EDIT_USER_PROFILE_FAILURE:
     default:
       return state;

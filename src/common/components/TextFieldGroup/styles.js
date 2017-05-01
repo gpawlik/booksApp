@@ -13,7 +13,7 @@ export default StyleSheet.create({
     color: colors.primaryDark
   },
   input: {
-    height: 30,
-    lineHeight: 30
+    height: 40,
+    lineHeight: 20
   }
 });

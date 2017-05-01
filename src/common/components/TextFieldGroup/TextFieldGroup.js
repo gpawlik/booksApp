@@ -24,6 +24,7 @@ const TextFieldGroup = ({
         secureTextEntry={secureTextEntry}
         style={s.input}
         multiline={multiline}
+        underlineColorAndroid="rgba(0,0,0,0)"
       />
       {error && <Text>{error}</Text>}
     </View>

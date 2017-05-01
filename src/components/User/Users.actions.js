@@ -58,9 +58,10 @@ export const fetchFailure = error => {
   };
 };
 
-export const updateSuccess = () => {
+export const updateSuccess = user => {
   return {
-    type: EDIT_USER_PROFILE_SUCCESS
+    type: EDIT_USER_PROFILE_SUCCESS,
+    user
   };
 };
 

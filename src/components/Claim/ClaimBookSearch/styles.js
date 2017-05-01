@@ -35,11 +35,13 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: '#666'
   },
-  searchButton: {
+  buttonBox: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 0,
     left: 0,
-    right: 0,
+    right: 0
+  },
+  searchButton: {
     backgroundColor: RED,
     color: '#fff',
     margin: 10,

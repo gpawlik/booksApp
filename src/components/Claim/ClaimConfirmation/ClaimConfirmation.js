@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, MapView, Text, TextInput, View } from 'react-native';
+import { Image, MapView, ScrollView, Text, TextInput, View } from 'react-native';
 import Button from 'react-native-button';
 
 import s from './styles';
 
 const ClaimConfirmation = ({ claim, book, onSubmit }) => {
   return (
-    <View style={s.container}>
+    <ScrollView style={s.container}>
       <View style={s.section}>
         <Text style={s.sectionTitle}>
           Claim details
@@ -45,14 +45,16 @@ const ClaimConfirmation = ({ claim, book, onSubmit }) => {
         <TextInput
           style={s.comment}
           placeholder="Write your comment here... (optional)"
-          multiline />
+          multiline
+          underlineColorAndroid="rgba(0,0,0,0)"
+          />
       </View>
       <Button
         style={s.button}
         onPress={onSubmit}>
         Submit!
       </Button>
-    </View>
+    </ScrollView>
   );
 };
 

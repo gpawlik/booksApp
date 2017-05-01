@@ -12,7 +12,7 @@ export default StyleSheet.create({
         height: 64
       },
       android: {
-        height: 54
+        height: 64
       },
       windows: {
         height: 54
@@ -35,7 +35,7 @@ export default StyleSheet.create({
         borderTopWidth: 20
       },
       android: {
-        borderTopWidth: 12
+        borderTopWidth: 0
       },
       windows: {
         borderTopWidth: 10
@@ -50,12 +50,12 @@ export default StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 14,
+    top: 24,
     left: 10
   },
   rightButton: {
     position: 'absolute',
-    top: 4,
+    top: 14,
     right: 10,
     height: 37,
     padding: 8

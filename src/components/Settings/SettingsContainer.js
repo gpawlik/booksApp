@@ -24,7 +24,7 @@ class SettingsContainer extends React.Component {
       value
     });
   }
-/*
+  /*
   onSave() {
     console.log('saving...');
     this.props.editUser({
@@ -34,11 +34,12 @@ class SettingsContainer extends React.Component {
   }*/
 
   render() {
-    const { settingsForm, logout } = this.props;
+    const { settingsForm, logout, updateUser } = this.props;
 
     return (
       <Settings
         user={settingsForm}
+        onSave={updateUser}
         onChange={this.onChange}
         onLogout={logout}/>
     );
@@ -47,7 +48,7 @@ class SettingsContainer extends React.Component {
 
 SettingsContainer.propTypes = {
   settingsForm: PropTypes.object.isRequired,
-  updateUserProfile: PropTypes.func.isRequired,
+  updateUser: PropTypes.func.isRequired,
   editSettings: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired
 };
@@ -58,7 +59,6 @@ SettingsContainer.renderNavigationBar = () => {
       hasBackButton
       hasActionButton
       actionText="Save"
-      onAction={() => { console.log('save') }}
       />
   );
 };
@@ -67,4 +67,4 @@ const mapStateToProps = createStructuredSelector({
   settingsForm: selectUserForm()
 });
 
-export default connect(mapStateToProps, { updateUserProfile, editSettings, logout: userLogout })(SettingsContainer);
+export default connect(mapStateToProps, { updateUser: updateUserProfile, editSettings, logout: userLogout })(SettingsContainer);

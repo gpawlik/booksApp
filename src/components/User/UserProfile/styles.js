@@ -9,18 +9,14 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   profileThumbnailBox: {
-    width: 130,
-    height: 130,
-    borderRadius: 65,
-    backgroundColor: '#fff',
-    borderWidth: 7,
-    borderColor: '#dedede',
-    overflow: 'hidden',
     marginTop: 15
   },
   profileThumbnail: {
     width: 130,
-    height: 130
+    height: 130,
+    borderRadius: 65,
+    borderWidth: 7,
+    borderColor: '#dedede'
   },
   secondaryButton: {
     color: '#aeaeae',

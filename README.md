@@ -64,6 +64,7 @@ solution: react-native upgrade
 # Linked libraries
 - react-native-svg
 - react-native-maps
+- react-native-camera
 
 # Logo?
 - http://www.dafont.com/snowboarding-only.font?fpp=100&psize=l&text=BooksFinder
@@ -76,12 +77,16 @@ solution: react-native upgrade
 * Client
 
 [ ] some messaging system
-[ ] make connection work android
+[x] make connection work android
 [ ] make maps work android
 [ ] setup map component with markers
-[ ] setup camera component
-[ ] setup settings data flow
+[x] setup camera component
+[x] setup settings data flow
 [x] make searches via Goodreads API
+[ ] sagas on leftings
+[ ] sagas on auth
+[ ] sagas on claim
+[ ] correct data flow on leftings
 
 [x] visual: claim details
 [x] visual: settings scene
@@ -102,3 +107,6 @@ CONS
 # Allow XHR requests in dev tools
 GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_session" --disable-web-security
+
+# Interesting project to analize
+https://github.com/nikgraf/CarteJaune

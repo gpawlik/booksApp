@@ -13,7 +13,7 @@ export default StyleSheet.create({
   },
   info: {
     fontSize: 14,
-    marginBottom: 3
+    marginBottom: 2
   },
   infoLabel: {
     fontWeight: '600',

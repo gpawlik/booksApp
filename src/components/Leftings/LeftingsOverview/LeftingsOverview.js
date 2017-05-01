@@ -12,20 +12,25 @@ const LeftingsOverview = ({ leftings, state, isLoading, toggleView }) => {
 
   return (
     <View>
-      {isLoading && <Preloader />}
-      <View style={s.toggleButtonBox}>
-        <Button
-          onPress={toggleView}
-          style={s.toggleButton}
-          containerStyle={s.buttonContainer}>
-        </Button>
-      </View>
       <ViewHandler
         leftings={leftings}
         />
+      {isLoading && <Preloader />}
     </View>
   );
 };
+
+/*
+
+<View style={s.toggleButtonBox}>
+  <Button
+    onPress={toggleView}
+    style={s.toggleButton}
+    containerStyle={s.buttonContainer}>
+
+  </Button>
+</View>
+*/
 
 LeftingsOverview.propTypes = {
   leftings: PropTypes.object.isRequired,

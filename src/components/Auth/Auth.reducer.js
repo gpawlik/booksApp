@@ -21,6 +21,7 @@ export default (state = initialState, action = {}) => {
       return state
         .set('user', fromJS({}))
         .set('isAuthenticated', false);
-    default: return state;
+    default:
+      return state;
   }
 };

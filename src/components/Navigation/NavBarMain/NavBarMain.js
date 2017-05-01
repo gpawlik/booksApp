@@ -6,9 +6,11 @@ import { Actions } from 'react-native-router-flux';
 import { ChevronIcon, CogIcon, CrossIcon, Logo } from 'common/components/Icons';
 import s from './styles';
 
-const NavBarMain = ({ hasBackButton, hasSettingsButton, hasCloseButton, hasActionButton, actionText, onClose, onAction }) => {
+const NavBarMain = ({ hasBackButton, hasSettingsButton, hasCloseButton, hasActionButton, actionText, onClose, onAction, onBack }) => {
   const backButton = (
-    <TouchableOpacity style={s.backButton} onPress={() => Actions.pop()}>
+    <TouchableOpacity style={s.backButton} onPress={() => {
+      return onBack ? onBack() : Actions.pop();
+    }}>
       <ChevronIcon />
     </TouchableOpacity>
   );
@@ -48,7 +50,8 @@ NavBarMain.propTypes = {
   hasActionButton: PropTypes.bool,
   actionText: PropTypes.string,
   onClose: PropTypes.func,
-  onAction: PropTypes.func
+  onAction: PropTypes.func,
+  onBack: PropTypes.func
 };
 
 export default NavBarMain;

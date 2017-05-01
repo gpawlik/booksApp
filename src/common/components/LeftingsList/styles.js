@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 import colors from 'config/colors';
 
@@ -6,7 +6,8 @@ export default StyleSheet.create({
   container: {
     backgroundColor: '#eee',
     padding: 4,
-    paddingBottom: 0
+    paddingBottom: 0,
+    height: Dimensions.get('window').height - 114
   },
   item: {
     marginBottom: 4,

@@ -32,44 +32,48 @@ const ClaimBookSearch = ({
       </Text>
 
       <View style={s.resultsContainer}>
-        <ScrollView style={s.resultsBox}>
-          <ListView
-            enableEmptySections
-            dataSource={results}
-            renderRow={({
-              title, author, imageUrl,
-              publishDate, rating, selected
-            }, type, index) => {
-              return (
-                <TouchableHighlight
-                  onPress={onSelectItem.bind(this, type, index)}
-                  underlayColor="#dedede">
-                  <View>
-                    <BookSearchItem
-                      title={title}
-                      author={author}
-                      imageUrl={imageUrl}
-                      publishDate={publishDate}
-                      rating={rating}
-                      isSelected={selected}
-                      />
-                  </View>
-                </TouchableHighlight>
-              );
-            }}
-          />
-        </ScrollView>
+        <View style={s.resultsBox}>
+          <ScrollView>
+            <ListView
+              enableEmptySections
+              dataSource={results}
+              renderRow={({
+                title, author, imageUrl,
+                publishDate, rating, selected
+              }, type, index) => {
+                return (
+                  <TouchableHighlight
+                    onPress={onSelectItem.bind(this, type, index)}
+                    underlayColor="#dedede">
+                    <View>
+                      <BookSearchItem
+                        title={title}
+                        author={author}
+                        imageUrl={imageUrl}
+                        publishDate={publishDate}
+                        rating={rating}
+                        isSelected={selected}
+                        />
+                    </View>
+                  </TouchableHighlight>
+                );
+              }}
+            />
+          </ScrollView>
+        </View>
+
         {!results._cachedRowCount && searchBoxText}
       </View>
-
-      <Button
-        onPress={onSubmit}
-        style={s.searchButton}
-        disabled={!isFormValid}
-        styleDisabled={{opacity: .5}}
-        >
-        Go to step 2
-      </Button>
+      <View style={s.buttonBox}>
+        <Button
+          onPress={onSubmit}
+          style={s.searchButton}
+          disabled={!isFormValid}
+          styleDisabled={{opacity: .5}}
+          >
+          Go to step 2
+        </Button>
+      </View>
     </View>
   );
 };

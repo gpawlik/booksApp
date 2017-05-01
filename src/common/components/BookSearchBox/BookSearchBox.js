@@ -14,6 +14,7 @@ const BookSearchBox = ({ searchTerm, placeholder, onChange, onSearch }) => {
         value={searchTerm}
         placeholder={placeholder}
         style={s.input}
+        underlineColorAndroid="rgba(0,0,0,0)"
       />
       <TouchableHighlight
         style={s.icon}

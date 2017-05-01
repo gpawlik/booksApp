@@ -17,6 +17,7 @@
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.3",
     "react-native-button": "^1.8.2",
+    "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
     "react-native-drawer": "^2.3.0",
     "react-native-router-flux": "3.38.0",
     "react-native-svg": "^5.1.7",

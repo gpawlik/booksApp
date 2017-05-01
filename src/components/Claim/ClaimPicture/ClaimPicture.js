@@ -1,15 +1,20 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import Button from 'react-native-button';
+import { Text, TouchableHighlight, View } from 'react-native';
+import Camera from 'react-native-camera';
 
 import s from './styles';
 
-export default () => {
+export default ({ cameraRef, takePicture }) => {
   return (
     <View style={s.contentWrapper}>
-      <Text>Make a lefting picture!</Text>
-      <Button onPress={() => Actions.step3()}>done</Button>
+      <Camera
+        ref={cameraRef}
+        style={s.preview}
+        aspect={Camera.constants.Aspect.fill}>
+        <TouchableHighlight style={s.capture} onPress={takePicture}>
+          <Text>[CAPTURE]</Text>
+        </TouchableHighlight>
+      </Camera>
     </View>
   );
 };

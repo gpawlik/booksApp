@@ -7,6 +7,7 @@ import { createStructuredSelector } from 'reselect';
 import LeftingDetails from './LeftingDetails';
 import Preloader from 'common/components/Preloader/Preloader';
 import { getLefting } from 'components/Leftings/Leftings.actions';
+import { setClaimBook } from 'components/Claim/Claim.actions';
 import { selectLefting } from 'components/Leftings/Leftings.selector';
 import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
 
@@ -18,6 +19,8 @@ class LeftingDetailsContainer extends React.Component {
     this.state = {
       isLoading: true
     };
+
+    this.onCheckout = this.onCheckout.bind(this);
   }
 
   componentDidMount() {
@@ -31,13 +34,18 @@ class LeftingDetailsContainer extends React.Component {
       });
   }
 
+  onCheckout() {
+    this.props.setClaimBook();
+  }
+
   render() {
     return (
       <View>
-        {this.state.isLoading && <Preloader />}
         <LeftingDetails
           lefting={this.props.lefting}
+          onCheckout={this.onCheckout}
           />
+        {this.state.isLoading && <Preloader />}
       </View>
     );
   }
@@ -56,4 +64,4 @@ const mapStateToProps = createStructuredSelector({
   lefting: selectLefting()
 });
 
-export default connect(mapStateToProps, { getLefting })(LeftingDetailsContainer);
+export default connect(mapStateToProps, { getLefting, setClaimBook })(LeftingDetailsContainer);

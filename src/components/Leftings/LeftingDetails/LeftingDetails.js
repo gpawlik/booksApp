@@ -8,7 +8,7 @@ import Rating from 'common/components/Rating/Rating';
 import BookMeta from 'common/components/BookMeta/BookMeta';
 import s from './styles';
 
-const LeftingDetails = ({ lefting }) => {
+const LeftingDetails = ({ lefting, onCheckout }) => {
   // TODO: if no lefting data, redirect to error page
   const { description, leftingDate, createdAt } = lefting;
   const leftingDateFormatted = moment(leftingDate).format('DD/MM/YYYY');
@@ -20,7 +20,7 @@ const LeftingDetails = ({ lefting }) => {
 
       <View style={s.actionBox}>
         <Button
-          onPress={() => Actions.leftingClaim()}
+          onPress={onCheckout}
           containerStyle={s.buttonCheckoutContainer}
           style={s.buttonCheckout}
           >
@@ -82,7 +82,8 @@ const LeftingDetails = ({ lefting }) => {
 };
 
 LeftingDetails.propTypes = {
-  lefting: PropTypes.object.isRequired
+  lefting: PropTypes.object.isRequired,
+  onCheckout: PropTypes.func.isRequired
 };
 
 export default LeftingDetails;

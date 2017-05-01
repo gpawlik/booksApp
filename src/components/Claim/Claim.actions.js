@@ -11,10 +11,10 @@ import {
 } from './Claim.actionTypes';
 import { transformBookData } from 'utils/transform';
 
-export const setClaimInfo = ({ key, value }) => {
+export const setClaimInfo = ({ id, value }) => {
   return {
     type: SET_CLAIM_INFO,
-    key,
+    id,
     value
   };
 };

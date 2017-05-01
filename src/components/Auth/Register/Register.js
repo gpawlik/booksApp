@@ -15,57 +15,59 @@ const Register = ({
   onChange, onSubmit
 }) => {
   return(
-    <ScrollView contentContainerStyle={s.container}>
-      <SignupIcon />
-      <View style={s.formBox}>
-        <TextFieldGroup
-          field="username"
-          label={translate('signup.form.label.username')}
-          placeholder={translate('signup.form.label.username')}
-          value={username}
-          error={errors.username}
-          onChange={onChange.bind(this, 'username')}
-          checkUserExists={checkUserExists}
-          />
-        <TextFieldGroup
-          field="email"
-          label={translate('signup.form.label.email')}
-          placeholder={translate('signup.form.label.email')}
-          value={email}
-          error={errors.email}
-          onChange={onChange.bind(this, 'email')}
-          checkUserExists={checkUserExists}
-          type="email"
-          />
-        <TextFieldGroup
-          field="password"
-          label={translate('signup.form.label.password')}
-          placeholder={translate('signup.form.label.password')}
-          value={password}
-          error={errors.password}
-          onChange={onChange.bind(this, 'password')}
-          type="password"
-          secureTextEntry
-          />
-        <TextFieldGroup
-          field="passwordConfirmation"
-          label={translate('signup.form.label.repeatPassword')}
-          placeholder={translate('signup.form.label.repeatPassword')}
-          value={passwordConfirmation}
-          error={errors.passwordConfirmation}
-          onChange={onChange.bind(this, 'passwordConfirmation')}
-          type="password"
-          secureTextEntry
-          />
-        <Button
-          onPress={onSubmit}
-          containerStyle={s.buttonContainer}
-          style={s.button}
-          disabled={isLoading || invalid}>
-          {translate('signup.form.button')}
-        </Button>
-      </View>
-    </ScrollView>
+    <View style={s.container}>
+      <ScrollView contentContainerStyle={s.scrollBox}>
+        <SignupIcon />
+        <View style={s.formBox}>
+          <TextFieldGroup
+            field="username"
+            label={translate('signup.form.label.username')}
+            placeholder={translate('signup.form.label.username')}
+            value={username}
+            error={errors.username}
+            onChange={onChange.bind(this, 'username')}
+            checkUserExists={checkUserExists}
+            />
+          <TextFieldGroup
+            field="email"
+            label={translate('signup.form.label.email')}
+            placeholder={translate('signup.form.label.email')}
+            value={email}
+            error={errors.email}
+            onChange={onChange.bind(this, 'email')}
+            checkUserExists={checkUserExists}
+            type="email"
+            />
+          <TextFieldGroup
+            field="password"
+            label={translate('signup.form.label.password')}
+            placeholder={translate('signup.form.label.password')}
+            value={password}
+            error={errors.password}
+            onChange={onChange.bind(this, 'password')}
+            type="password"
+            secureTextEntry
+            />
+          <TextFieldGroup
+            field="passwordConfirmation"
+            label={translate('signup.form.label.repeatPassword')}
+            placeholder={translate('signup.form.label.repeatPassword')}
+            value={passwordConfirmation}
+            error={errors.passwordConfirmation}
+            onChange={onChange.bind(this, 'passwordConfirmation')}
+            type="password"
+            secureTextEntry
+            />
+          <Button
+            onPress={onSubmit}
+            containerStyle={s.buttonContainer}
+            style={s.button}
+            disabled={isLoading || invalid}>
+            {translate('signup.form.button')}
+          </Button>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 

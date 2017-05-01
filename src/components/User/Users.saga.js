@@ -15,9 +15,9 @@ import {
 } from './Users.actionTypes';
 import {
   fetchSuccess,
-  fetchError,
+  fetchFailure,
   updateSuccess,
-  updateError
+  updateFailure
 } from './Users.actions';
 import {
   selectUser,
@@ -31,23 +31,22 @@ export function* fetchUser(action) {
 
     yield put(fetchSuccess(data));
   } catch (err) {
-    yield put(fetchError(err));
+    yield put(fetchFailure(err));
   }
 }
 
 export function* updateUser() {
-  console.log('thats my man!');
   const currentUser = yield select(selectUser());
   const formData = yield select(selectUserForm());
-  const data = transformUpdateData(currentUser, formData);
+  const transformed = transformUpdateData(currentUser, formData);
 
   try {
-    const result = yield call(update, data);
-    const userData = parseUpdateData({ result });
+    const result = yield call(update, transformed);
+    const data = parseUpdateData(result);
 
-    yield put(updateSuccess(userData));
+    yield put(updateSuccess(data));
   } catch (err) {
-    yield put(updateError(err));
+    yield put(updateFailure(err));
   }
 }
 
