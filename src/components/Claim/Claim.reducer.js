@@ -9,7 +9,7 @@ import {
 
 const initialState = fromJS({
   claim: {
-    pictureUrl: 'http://i0.wp.com/www.myballard.com/wp-content/uploads/photo-152-e1348784901110.jpg',
+    pictureUrl: '',
     location: '41.222,2.054',
     comment: 'Some amazing book',
     bookId: '123456'

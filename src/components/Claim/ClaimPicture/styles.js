@@ -15,9 +15,7 @@ export default StyleSheet.create({
   },
   capture: {
     flex: 0,
-    borderRadius: 5,
     padding: 10,
-    margin: 40,
-    backgroundColor: 'red'
+    margin: 40
   }
 });

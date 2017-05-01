@@ -12,7 +12,7 @@ const metaItem = {
 };
 
 export default StyleSheet.create({
-  image: {
+  picture: {
     backgroundColor: '#ddd',
     height: 200
   },

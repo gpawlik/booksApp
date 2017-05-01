@@ -11,7 +11,7 @@ import config from 'config/development';
 
 export function getLeftings() {
   return dispatch => {
-    return axios.get(`${config.apiServer}/api/leftings`).then(res => {
+    return axios.get(`${config.apiServer}/api/leftings/wall`).then(res => {
       dispatch({
         type: GET_LEFTINGS_SUCCESS,
         leftings: res.data

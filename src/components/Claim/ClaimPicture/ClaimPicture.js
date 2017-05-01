@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, TouchableHighlight, View } from 'react-native';
+import { TouchableHighlight, View } from 'react-native';
 import Camera from 'react-native-camera';
 
+import { CameraIcon } from 'common/components/Icons';
 import s from './styles';
 
 export default ({ cameraRef, takePicture }) => {
@@ -11,8 +12,14 @@ export default ({ cameraRef, takePicture }) => {
         ref={cameraRef}
         style={s.preview}
         aspect={Camera.constants.Aspect.fill}>
-        <TouchableHighlight style={s.capture} onPress={takePicture}>
-          <Text>[CAPTURE]</Text>
+        <TouchableHighlight
+          style={s.capture}
+          underlayColor="transparent"
+          onPress={takePicture}
+          >
+          <View>
+            <CameraIcon />
+          </View>
         </TouchableHighlight>
       </Camera>
     </View>

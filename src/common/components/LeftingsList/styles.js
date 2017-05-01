@@ -15,17 +15,31 @@ export default StyleSheet.create({
     borderRadius: 3,
     overflow: 'hidden'
   },
-  itemPicture: {
+  pictureBox: {
     height: 150,
     backgroundColor: '#ddd',
-    padding: 10,
     justifyContent: 'flex-end'
+  },
+  picture: {
+    height: 150,
+    alignSelf: 'stretch',
+    resizeMode: 'cover'
+  },
+  itemInfoBox: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    padding: 5
   },
   itemBookTitle: {
     color: '#fff',
     fontSize: 22,
     fontWeight: '900',
-    marginBottom: 5
+    marginBottom: 5,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    paddingLeft: 5
   },
   itemBookAuthorBox: {
     flexDirection: 'row'

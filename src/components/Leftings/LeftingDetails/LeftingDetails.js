@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
-import { ScrollView, Text, View } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 
@@ -10,13 +10,14 @@ import s from './styles';
 
 const LeftingDetails = ({ lefting, onCheckout }) => {
   // TODO: if no lefting data, redirect to error page
-  const { description, leftingDate, createdAt } = lefting;
+  const { book, description, leftingDate, createdAt } = lefting;
   const leftingDateFormatted = moment(leftingDate).format('DD/MM/YYYY');
   const timeCreated = moment(createdAt).fromNow();
+  const pictureUrl = book ? book.pictureUrl : false;
 
   return (
     <ScrollView>
-      <View style={s.image} />
+      {pictureUrl && <Image style={s.picture} source={{uri: pictureUrl }} />}
 
       <View style={s.actionBox}>
         <Button

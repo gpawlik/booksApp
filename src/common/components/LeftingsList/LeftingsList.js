@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import {
+  Image,
   ListView,
   ScrollView,
   Text,
@@ -20,16 +21,20 @@ const LeftingsList = ({ leftings }) => {
           enableEmptySections
           dataSource={leftings}
           renderRow={lefting => {
+            if(!lefting.book) return null;
             return (
               <TouchableHighlight
                 onPress={() => Actions.lefting({ leftingId: lefting._id })}
                 underlayColor="#eee"
                 style={s.item}>
                 <View>
-                  <View style={s.itemPicture}>
-                    <Text style={s.itemBookTitle}>{'El millor dels mons'.toUpperCase()}</Text>
-                    <View style={s.itemBookAuthorBox}>
-                      <Text style={s.itemBookAuthor}>{'Quim Monzó'.toUpperCase()}</Text>
+                  <View style={s.pictureBox}>
+                    <Image style={s.picture} source={{uri: lefting.book.pictureUrl }} />
+                    <View style={s.itemInfoBox}>
+                      <Text style={s.itemBookTitle}>{lefting.book.title.toUpperCase()}</Text>
+                      <View style={s.itemBookAuthorBox}>
+                        <Text style={s.itemBookAuthor}>{lefting.book.author.toUpperCase()}</Text>
+                      </View>
                     </View>
                   </View>
                   <View style={s.itemInfo}>

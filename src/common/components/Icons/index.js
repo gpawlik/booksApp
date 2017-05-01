@@ -1,4 +1,5 @@
 import AboutIcon from './AboutIcon';
+import CameraIcon from './CameraIcon';
 import CheckIcon from './CheckIcon';
 import ChevronIcon from './ChevronIcon';
 import CogIcon from './CogIcon';
@@ -17,6 +18,7 @@ import StarIcon from './StarIcon';
 
 export {
   AboutIcon,
+  CameraIcon,
   CheckIcon,
   ChevronIcon,
   CogIcon,

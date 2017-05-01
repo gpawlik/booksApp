@@ -44,7 +44,7 @@ export default Actions.create(
           <Scene key="createLefting" initial title="Create" iconType="create" icon={TabIcon} navigationBarStyle={{backgroundColor: colors.primaryDark}} titleStyle={{color: 'white'}}>
             <Scene key="step1" component={ClaimBookSearchContainer} title="Claim Book Search" />
             <Scene key="step2" component={ClaimPictureContainer} hideNavBar={false} title="Claim picture" />
-            <Scene key="step3" component={ClaimConfirmationContainer} title="Claim confirmation" />
+            <Scene key="step3" initial component={ClaimConfirmationContainer} title="Claim confirmation" />
           </Scene>
           <Scene key="profile" title="Profile" iconType="profile" icon={TabIcon} navigationBarStyle={{backgroundColor: colors.primaryDark}} titleStyle={{color: 'white'}}>
             <Scene key="profileDetails" component={UserProfileContainer} title={translate('users.profile.title')} />

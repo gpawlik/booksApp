@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, MapView, ScrollView, Text, TextInput, View } from 'react-native';
 import Button from 'react-native-button';
+import GoogleMap from 'react-native-google-static-map';
 
 import s from './styles';
 
@@ -27,15 +28,13 @@ const ClaimConfirmation = ({ claim, book, onSubmit }) => {
         <Text style={s.sectionTitle}>
           Book location
         </Text>
-        <MapView
+        <GoogleMap
           style={s.map}
-          region={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421
-          }}
-          />
+          latitude={'32.064171'}
+          longitude={'34.7748068'}
+          zoom={13}
+          size={{ width: 380, height: 120 }}
+        />
       </View>
 
       <View style={s.section}>
@@ -57,6 +56,18 @@ const ClaimConfirmation = ({ claim, book, onSubmit }) => {
     </ScrollView>
   );
 };
+
+/*
+<MapView
+  style={s.map}
+  region={{
+    latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421
+  }}
+  />
+*/
 
 ClaimConfirmation.propTypes = {
   claim: PropTypes.object.isRequired,

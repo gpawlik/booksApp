@@ -39,10 +39,12 @@ class LeftingDetailsContainer extends React.Component {
   }
 
   render() {
+    const { lefting } = this.props;
+
     return (
       <View>
         <LeftingDetails
-          lefting={this.props.lefting}
+          lefting={lefting}
           onCheckout={this.onCheckout}
           />
         {this.state.isLoading && <Preloader />}
