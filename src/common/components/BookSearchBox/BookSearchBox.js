@@ -15,6 +15,8 @@ const BookSearchBox = ({ searchTerm, placeholder, onChange, onSearch }) => {
         placeholder={placeholder}
         style={s.input}
         underlineColorAndroid="rgba(0,0,0,0)"
+        returnKeyType="search"
+        onSubmitEditing={onSearch}
       />
       <TouchableHighlight
         style={s.icon}

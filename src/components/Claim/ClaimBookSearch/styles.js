@@ -6,13 +6,6 @@ export default StyleSheet.create({
   container: {
     flex: 1
   },
-  sectionTitle: {
-    padding: 10,
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#aaa',
-    backgroundColor: '#fafafa'
-  },
   resultsContainer: {
     flex: 1,
     marginBottom: 60
@@ -31,9 +24,9 @@ export default StyleSheet.create({
     padding: 15
   },
   searchBoxText: {
-    fontSize: 16,
+    fontSize: 14,
     textAlign: 'center',
-    color: '#666'
+    color: '#999'
   },
   buttonBox: {
     position: 'absolute',

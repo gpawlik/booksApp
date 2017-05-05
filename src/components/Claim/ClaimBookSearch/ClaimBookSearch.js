@@ -1,20 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListView, ScrollView, Text, TouchableHighlight, View } from 'react-native';
+import { ActivityIndicator, ListView, ScrollView, Text, TouchableHighlight, View } from 'react-native';
 import Button from 'react-native-button';
 
 import BookSearchBox from 'common/components/BookSearchBox/BookSearchBox';
 import BookSearchItem from 'common/components/BookSearchItem/BookSearchItem';
+import Preloader from 'common/components/Preloader/Preloader';
 import s from './styles';
 
 const ClaimBookSearch = ({
   searchTerm, results, onChange,
   onSelectItem, onSearch, onSubmit,
-  isFormValid
+  isFormValid, isLoading
 }) => {
+  const empty = (
+    <Text style={s.searchBoxText}>Use the searchbox above to find the book you are going to leave...</Text>
+  );
+  const loader = (
+    <ActivityIndicator
+      color="#dedede"
+      size="large"
+    />
+  );
+  const screenMessage = isLoading ? loader : empty;
   const searchBoxText = (
     <View style={s.searchBoxInfo}>
-      <Text style={s.searchBoxText}>Use the searchbox above to find the book you are going to leave...</Text>
+      {screenMessage}
     </View>
   );
 
@@ -26,10 +37,6 @@ const ClaimBookSearch = ({
         onChange={onChange}
         onSearch={onSearch}
         />
-
-      <Text style={s.sectionTitle}>
-        Book results
-      </Text>
 
       <View style={s.resultsContainer}>
         <View style={s.resultsBox}>
@@ -62,7 +69,8 @@ const ClaimBookSearch = ({
           </ScrollView>
         </View>
 
-        {!results._cachedRowCount && searchBoxText}
+        {(!results._cachedRowCount || isLoading) && searchBoxText}
+        <Preloader isLoading={false} />
       </View>
       <View style={s.buttonBox}>
         <Button
@@ -85,7 +93,8 @@ ClaimBookSearch.propTypes = {
   onSelectItem: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
-  isFormValid: PropTypes.bool.isRequired
+  isFormValid: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
 export default ClaimBookSearch;

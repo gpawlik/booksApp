@@ -4,12 +4,12 @@ import colors from 'config/colors';
 
 export default StyleSheet.create({
   profileTop: {
-    height: 120,
+    height: 140,
     backgroundColor: colors.primaryDark,
     alignItems: 'center'
   },
   profileThumbnailBox: {
-    marginTop: 15
+    marginTop: 5
   },
   profileThumbnail: {
     width: 130,

@@ -2,8 +2,9 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    padding: 10,
     height: 50,
+    paddingLeft: 10,
+    paddingRight: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#dedede',
     flexDirection: 'row',
@@ -24,9 +25,9 @@ export default StyleSheet.create({
     backgroundColor: '#dedede'
   },
   input: {
+    flex: 1,
     color: '#666',
-    fontSize: 14,
-    height: 20
+    fontSize: 15
   },
   switcher: {
     alignSelf: 'flex-end'

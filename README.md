@@ -87,6 +87,7 @@ solution: react-native upgrade
 [ ] sagas on auth
 [ ] sagas on claim
 [ ] correct data flow on leftings
+[ ] upload user picture
 
 [x] visual: claim details
 [x] visual: settings scene

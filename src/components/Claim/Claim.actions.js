@@ -7,6 +7,7 @@ import {
   SET_CLAIM_INFO,
   RESET_CLAIM_INFO,
   SET_CLAIM_BOOK,
+  BOOK_SEARCH,
   BOOK_SEARCH_SUCCESS
 } from './Claim.actionTypes';
 import { transformBookData } from 'utils/transform';
@@ -32,18 +33,29 @@ export const setClaimBook = index => {
   };
 };
 
+export const bookSearchLaunch = () => {
+  return {
+    type: BOOK_SEARCH
+  };
+};
+
+export const bookSearchSuccess = results => {
+  return {
+    type: BOOK_SEARCH_SUCCESS,
+    results: transformBookData(results.GoodreadsResponse.search[0].results[0].work)
+  };
+};
+
 export const searchBooks = query => {
   return dispatch => {
+    dispatch(bookSearchLaunch());
     return axios
       .get(`${config.goodreadsApi.url}/search?key=${config.goodreadsApi.key}&q=${query}`)
       .then(res => {
         return xmlToJson(res.data);
       })
       .then(res => {
-        dispatch({
-          type: BOOK_SEARCH_SUCCESS,
-          results: transformBookData(res.GoodreadsResponse.search[0].results[0].work)
-        });
+        dispatch(bookSearchSuccess(res));
       });
   };
 };

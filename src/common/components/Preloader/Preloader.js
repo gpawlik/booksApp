@@ -4,7 +4,9 @@ import { ActivityIndicator, Text, View } from 'react-native';
 import colors from 'config/colors';
 import s from './styles';
 
-const Preloader = ({ size, color, text }) => {
+const Preloader = ({ size, color, text, isLoading }) => {
+  if (!isLoading) return null;
+  
   return (
     <View style={s.overlay}>
       <ActivityIndicator
@@ -19,7 +21,8 @@ const Preloader = ({ size, color, text }) => {
 Preloader.propTypes = {
   size: PropTypes.oneOf(['small', 'large']),
   color: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
+  isLoading: PropTypes.bool.isRequired
 };
 
 Preloader.defaultProps = {

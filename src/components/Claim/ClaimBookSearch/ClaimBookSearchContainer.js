@@ -8,7 +8,11 @@ import { createStructuredSelector } from 'reselect';
 import ClaimBookSearch from './ClaimBookSearch';
 import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
 import { searchBooks, setClaimBook } from 'components/Claim/Claim.actions';
-import { selectSearchResults, selectSearchFormValid } from 'components/Claim/Claim.selector';
+import {
+  selectSearchResults,
+  selectSearchFormValid,
+  selectSearchIsLoading
+} from 'components/Claim/Claim.selector';
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
@@ -49,7 +53,7 @@ class ClaimBookSearchContainer extends React.Component {
   }
 
   render() {
-    const { isFormValid } = this.props;
+    const { isFormValid, isLoading } = this.props;
 
     return (
       <ClaimBookSearch
@@ -60,6 +64,7 @@ class ClaimBookSearchContainer extends React.Component {
         onSearch={this.onSearch}
         onSubmit={() => Actions.step2()}
         isFormValid={isFormValid}
+        isLoading={isLoading}
       />
     );
   }
@@ -67,7 +72,8 @@ class ClaimBookSearchContainer extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   searchResults: selectSearchResults(),
-  isFormValid: selectSearchFormValid()
+  isFormValid: selectSearchFormValid(),
+  isLoading: selectSearchIsLoading()
 });
 
 ClaimBookSearchContainer.propTypes = {

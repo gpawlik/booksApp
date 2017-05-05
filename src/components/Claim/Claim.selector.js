@@ -21,3 +21,8 @@ export const selectSearchFormValid = () => createSelector(
   selectClaimStore(),
   claimState => claimState.get('isFormValid')
 );
+
+export const selectSearchIsLoading = () => createSelector(
+  selectClaimStore(),
+  claimState => claimState.get('isSearching')
+);

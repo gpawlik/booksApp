@@ -4,6 +4,7 @@ import {
   SET_CLAIM_INFO,
   RESET_CLAIM_INFO,
   SET_CLAIM_BOOK,
+  BOOK_SEARCH,
   BOOK_SEARCH_SUCCESS
 } from './Claim.actionTypes';
 
@@ -29,7 +30,8 @@ const initialState = fromJS({
     pages: ''
   },
   searchResults: [],
-  isFormValid: false
+  isFormValid: false,
+  isSearching: false
 });
 
 export default (state = initialState, action) => {
@@ -38,11 +40,15 @@ export default (state = initialState, action) => {
       return state.setIn(['claim', action.id], action.value);
     case RESET_CLAIM_INFO:
       return state.set('claim', initialState.get('claim'));
+    case BOOK_SEARCH:
+      return state
+        .set('isSearching', true);
     case BOOK_SEARCH_SUCCESS:
       return state
         .set('searchResults', fromJS(action.results))
         .set('book', initialState.get('book'))
-        .set('isFormValid', false);
+        .set('isFormValid', false)
+        .set('isSearching', false);
     case SET_CLAIM_BOOK:
     // TODO: some more elegant way to do it?
       const bookIndex = parseInt(action.index, 10);
