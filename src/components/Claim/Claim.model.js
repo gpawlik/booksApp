@@ -1,4 +1,6 @@
-/*export const transformBookData = data => {
+export const transformBookData = results => {
+  const data = results.GoodreadsResponse.search[0].results[0].work;
+
   return data.map(({
     best_book,
     original_publication_year,
@@ -14,4 +16,4 @@
       selected
     };
   });
-};*/
+};

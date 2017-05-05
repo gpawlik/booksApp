@@ -1,12 +1,6 @@
 import { fromJS } from 'immutable';
 
-import {
-  SET_CLAIM_INFO,
-  RESET_CLAIM_INFO,
-  SET_CLAIM_BOOK,
-  BOOK_SEARCH,
-  BOOK_SEARCH_SUCCESS
-} from './Claim.actionTypes';
+import { actionTypes as at} from './Claim.constants';
 
 const initialState = fromJS({
   claim: {
@@ -36,20 +30,20 @@ const initialState = fromJS({
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case SET_CLAIM_INFO:
+    case at.CLAIM_SET_INFO:
       return state.setIn(['claim', action.id], action.value);
-    case RESET_CLAIM_INFO:
+    case at.CLAIM_RESET_INFO:
       return state.set('claim', initialState.get('claim'));
-    case BOOK_SEARCH:
+    case at.BOOK_SEARCH:
       return state
         .set('isSearching', true);
-    case BOOK_SEARCH_SUCCESS:
+    case at.BOOK_SEARCH_SUCCESS:
       return state
         .set('searchResults', fromJS(action.results))
         .set('book', initialState.get('book'))
         .set('isFormValid', false)
         .set('isSearching', false);
-    case SET_CLAIM_BOOK:
+    case at.CLAIM_SET_BOOK:
     // TODO: some more elegant way to do it?
       const bookIndex = parseInt(action.index, 10);
       const results = state.get('searchResults').map(item => {

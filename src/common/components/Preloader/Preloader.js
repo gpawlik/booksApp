@@ -6,7 +6,7 @@ import s from './styles';
 
 const Preloader = ({ size, color, text, isLoading }) => {
   if (!isLoading) return null;
-  
+
   return (
     <View style={s.overlay}>
       <ActivityIndicator
@@ -22,7 +22,7 @@ Preloader.propTypes = {
   size: PropTypes.oneOf(['small', 'large']),
   color: PropTypes.string,
   text: PropTypes.string,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool
 };
 
 Preloader.defaultProps = {

@@ -3,18 +3,12 @@ import axios from 'axios';
 import config from 'config/development';
 import xmlToJson from 'utils/xmlToJson';
 
-import {
-  SET_CLAIM_INFO,
-  RESET_CLAIM_INFO,
-  SET_CLAIM_BOOK,
-  BOOK_SEARCH,
-  BOOK_SEARCH_SUCCESS
-} from './Claim.actionTypes';
+import { actionTypes as at } from './Claim.constants';
 import { transformBookData } from 'utils/transform';
 
 export const setClaimInfo = ({ id, value }) => {
   return {
-    type: SET_CLAIM_INFO,
+    type: at.CLAIM_SET_INFO,
     id,
     value
   };
@@ -22,40 +16,33 @@ export const setClaimInfo = ({ id, value }) => {
 
 export const resetClaimInfo = () => {
   return {
-    type: RESET_CLAIM_INFO
+    type: at.CLAIM_RESET_INFO
   };
 };
 
 export const setClaimBook = index => {
   return {
-    type: SET_CLAIM_BOOK,
+    type: at.CLAIM_SET_BOOK,
     index
   };
 };
 
-export const bookSearchLaunch = () => {
+export const searchBooks = query => {
   return {
-    type: BOOK_SEARCH
+    type: at.BOOK_SEARCH,
+    query
   };
 };
 
 export const bookSearchSuccess = results => {
   return {
-    type: BOOK_SEARCH_SUCCESS,
-    results: transformBookData(results.GoodreadsResponse.search[0].results[0].work)
+    type: at.BOOK_SEARCH_SUCCESS,
+    results
   };
 };
 
-export const searchBooks = query => {
-  return dispatch => {
-    dispatch(bookSearchLaunch());
-    return axios
-      .get(`${config.goodreadsApi.url}/search?key=${config.goodreadsApi.key}&q=${query}`)
-      .then(res => {
-        return xmlToJson(res.data);
-      })
-      .then(res => {
-        dispatch(bookSearchSuccess(res));
-      });
+export const bookSearchFailure = () => {
+  return {
+    type: at.BOOK_SEARCH_FAILURE
   };
 };

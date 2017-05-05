@@ -39,6 +39,7 @@ class LoginContainer extends Component {
       this.props
         .login(this.state)
         .catch(err => {
+          console.log(err);
           this.setState({
             errors: err.response.data,
             isLoading: false
