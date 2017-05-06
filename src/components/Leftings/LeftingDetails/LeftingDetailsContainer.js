@@ -1,45 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import { createStructuredSelector } from 'reselect';
 
 import LeftingDetails from './LeftingDetails';
 import Preloader from 'common/components/Preloader/Preloader';
-import { getLefting } from 'components/Leftings/Leftings.actions';
+import { fetchLeftingsSingle } from 'components/Leftings/Leftings.actions';
 import { setClaimBook } from 'components/Claim/Claim.actions';
-import { selectLefting } from 'components/Leftings/Leftings.selector';
+import {
+  selectLefting,
+  selectLeftingIsLoading
+} from 'components/Leftings/Leftings.selector';
 import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
 
-class LeftingDetailsContainer extends React.Component {
+class LeftingDetailsContainer extends Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      isLoading: true
-    };
 
     this.onCheckout = this.onCheckout.bind(this);
   }
 
   componentDidMount() {
-    this.props
-      .getLefting(this.props.leftingId)
-      .then(() => {
-        this.setState({ isLoading: false });
-      })
-      .catch(() => {
-        Actions.error();
-      });
+    const { onFetchLeftingsSingle, leftingId } = this.props;
+
+    onFetchLeftingsSingle(leftingId);
   }
 
   onCheckout() {
-    this.props.setClaimBook();
+    const { onSetClaimBook } = this.props;
+
+    onSetClaimBook();
   }
 
   render() {
-    const { lefting } = this.props;
+    const { lefting, isLoading } = this.props;
 
     return (
       <View>
@@ -47,23 +43,40 @@ class LeftingDetailsContainer extends React.Component {
           lefting={lefting}
           onCheckout={this.onCheckout}
           />
-        {this.state.isLoading && <Preloader />}
+        <Preloader isLoading={isLoading} />
       </View>
     );
   }
 }
 
-LeftingDetailsContainer.propTypes = {
-  lefting: React.PropTypes.object.isRequired,
-  getLefting: React.PropTypes.func.isRequired
-};
-
 LeftingDetailsContainer.renderNavigationBar = ({ title }) => {
-  return <NavBarMain title={title} hasBackButton />;
+  return (
+    <NavBarMain
+      title={title}
+      hasBackButton
+      />
+  );
 };
 
 const mapStateToProps = createStructuredSelector({
-  lefting: selectLefting()
+  lefting: selectLefting(),
+  isLoading: selectLeftingIsLoading()
 });
 
-export default connect(mapStateToProps, { getLefting, setClaimBook })(LeftingDetailsContainer);
+const mapDispatchToProps = dispatch => ({
+  onFetchLeftingsSingle: () => {
+    dispatch(fetchLeftingsSingle());
+  },
+  onSetClaimBook: () => {
+    dispatch(setClaimBook());
+  }
+});
+
+LeftingDetailsContainer.propTypes = {
+  lefting: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  onFetchLeftingsSingle: PropTypes.func.isRequired,
+  onSetClaimBook: PropTypes.func.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LeftingDetailsContainer);

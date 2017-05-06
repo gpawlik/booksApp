@@ -83,10 +83,10 @@ solution: react-native upgrade
 [x] setup camera component
 [x] setup settings data flow
 [x] make searches via Goodreads API
-[ ] geolocation 
-[ ] sagas on leftings
+[ ] geolocation
+[x] sagas on leftings
 [ ] sagas on auth
-[ ] sagas on claim
+[x] sagas on claim
 [ ] correct data flow on leftings
 [ ] upload user picture
 

@@ -1,27 +1,40 @@
 import { fromJS } from 'immutable';
-import {
-  GET_LEFTINGS_SUCCESS,
-  GET_LEFTINGS_FAILURE,
-  GET_LEFTING_SUCCESS,
-  DELETE_LEFTING_SUCCESS
-} from './Leftings.actionTypes';
+
+import { actionTypes as at } from './Leftings.constants';
 
 const initialState = fromJS({
   leftings: [],
-  lefting: {}
+  lefting: {},
+  isLeftingsLoading: false,
+  isLeftingLoading: false,
+  view: 'list'
 });
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case GET_LEFTINGS_SUCCESS:
-      return state.set('leftings', fromJS(action.leftings));
-    case GET_LEFTING_SUCCESS:
-      return state.set('lefting', fromJS(action.lefting));
-    case DELETE_LEFTING_SUCCESS:
-      const deletedLeftingIndex = state.get('leftings').findIndex(obj => obj._id === action.leftingId);
-
-      return state.deleteIn(['leftings', deletedLeftingIndex]);
-    case GET_LEFTINGS_FAILURE:
+    case at.LEFTINGS_FETCH:
+      return state
+        .set('isLeftingsLoading', true);
+    case at.LEFTINGS_FETCH_SUCCESS:
+      return state
+        .set('leftings', fromJS(action.leftings))
+        .set('isLeftingsLoading', false);
+    case at.LEFTINGS_FETCH_FAILURE:
+      return state
+        .set('isLeftingsLoading', false);
+    case at.LEFTINGS_FETCH_SINGLE:
+      return state
+        .set('isLeftingLoading', true);
+    case at.LEFTINGS_FETCH_SINGLE_SUCCESS:
+      return state
+        .set('lefting', fromJS(action.lefting))
+        .set('isLeftingLoading', false);
+    case at.LEFTINGS_FETCH_SINGLE_FAILURE:
+      return state
+        .set('isLeftingLoading', false);
+    case at.LEFTINGS_CHANGE_VIEW:
+      return state
+        .set('view', action.view);
     default:
       return state;
   }
