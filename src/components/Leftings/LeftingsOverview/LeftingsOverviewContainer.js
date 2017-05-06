@@ -17,7 +17,7 @@ import {
   selectLeftingsView
 } from 'components/Leftings/Leftings.selector';
 import LeftingsOverview from './LeftingsOverview';
-import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
+import NavBarMainContainer from 'components/Navigation/NavBarMain/NavBarMainContainer';
 import { getGeolocation } from 'utils/geolocation';
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -64,12 +64,14 @@ class LeftingsOverviewContainer extends Component {
   render() {
     const { isLoading, view } = this.props;
     const { dataSource } = this.state;
+    const isEmpty = !isLoading && !dataSource._cachedRowCount;
 
     return (
       <LeftingsOverview
         leftings={dataSource}
         state={view}
         isLoading={isLoading}
+        isEmpty={isEmpty}
         toggleView={this.toggleView}
       />
     );
@@ -102,7 +104,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 LeftingsOverviewContainer.renderNavigationBar = () => {
-  return <NavBarMain />;
+  return <NavBarMainContainer />;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeftingsOverviewContainer);

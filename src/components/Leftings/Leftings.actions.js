@@ -16,6 +16,7 @@ export const fetchLeftingsSuccess = res => {
 export const fetchLeftingsFailure = error => {
   return {
     type: at.LEFTINGS_FETCH_FAILURE,
+    message: 'Fetching leftings failed',
     error
   };
 };

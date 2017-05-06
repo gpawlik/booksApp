@@ -3,10 +3,25 @@ import PropTypes from 'prop-types';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-import { ChevronIcon, CogIcon, CrossIcon, Logo } from 'common/components/Icons';
+import {
+  ChevronIcon,
+  CogIcon,
+  CrossIcon,
+  Logo
+} from 'common/components/Icons';
 import s from './styles';
 
-const NavBarMain = ({ hasBackButton, hasSettingsButton, hasCloseButton, hasActionButton, actionText, onClose, onAction, onBack }) => {
+const NavBarMain = ({
+  hasBackButton,
+  hasSettingsButton,
+  hasCloseButton,
+  hasActionButton,
+  actionText,
+  onClose,
+  onAction,
+  onBack,
+  message = {}
+}) => {
   const backButton = (
     <TouchableOpacity style={s.backButton} onPress={() => {
       return onBack ? onBack() : Actions.pop();
@@ -29,6 +44,11 @@ const NavBarMain = ({ hasBackButton, hasSettingsButton, hasCloseButton, hasActio
       <Text>{actionText}</Text>
     </TouchableOpacity>
   );
+  const messageBox = (
+    <View style={s.messageBox}>
+      <Text style={s.messageText}>{message.text}!</Text>
+    </View>
+  );
 
   return (
     <View style={s.container}>
@@ -38,7 +58,9 @@ const NavBarMain = ({ hasBackButton, hasSettingsButton, hasCloseButton, hasActio
         {hasSettingsButton && settingsButton}
         {hasCloseButton && closeButton}
         {hasActionButton && actionButton}
+        {(message.hasOwnProperty('text') && message.text !== '') && messageBox}
       </View>
+
     </View>
   );
 };

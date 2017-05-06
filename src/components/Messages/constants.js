@@ -1,0 +1,4 @@
+export const actionTypes = {
+  MESSAGES_ADD: 'MESSAGES/ADD',
+  MESSAGES_REMOVE: 'MESSAGES/REMOVE'
+};

@@ -76,22 +76,27 @@ AndroidManifest.xml: <uses-permission android:name="android.permission.ACCESS_FI
 - propType of passed style to the component is number, not object
 (because of index based IDs created by StyleSheet.create)
 
+- geolocation implementation may vary across android versions:
+https://gist.github.com/raldred/b08cf60712eb87d81f05437444dff4ae
+
 # TO-DOs
 * Client
 
 [ ] some messaging system
 [x] make connection work android
-[ ] make maps work android
+[x] make maps work android
 [ ] setup map component with markers
 [x] setup camera component
 [x] setup settings data flow
 [x] make searches via Goodreads API
-[ ] geolocation
+[x] geolocation
 [x] sagas on leftings
 [ ] sagas on auth
 [x] sagas on claim
 [ ] correct data flow on leftings
 [ ] upload user picture
+[ ] empty views / fallback information
+[ ] load more results
 
 [x] visual: claim details
 [x] visual: settings scene
@@ -115,3 +120,5 @@ GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;
 
 # Interesting project to analize
 https://github.com/nikgraf/CarteJaune
+
+http://localhost:8081/index.ios.bundle?platform=ios&dev=true&minify=false&hot=true

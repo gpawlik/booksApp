@@ -50,14 +50,48 @@ export default StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 24,
+    ...Platform.select({
+      ios: {
+        top: 14
+      },
+      android: {
+        top: 24
+      },
+      windows: {
+        top: 24
+      }
+    }),
+
     left: 10
   },
   rightButton: {
     position: 'absolute',
-    top: 14,
+    ...Platform.select({
+      ios: {
+        top: 4
+      },
+      android: {
+        top: 14
+      },
+      windows: {
+        top: 14
+      }
+    }),
     right: 10,
     height: 37,
     padding: 8
+  },
+  messageBox: {
+    position: 'absolute',
+    bottom: -30,
+    left: 0,
+    right: 0,
+    height: 30,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  messageText: {
+    color: '#fff'
   }
 });

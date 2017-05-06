@@ -1,6 +1,6 @@
 
 import React, { PropTypes } from 'react';
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Circle, G, Path } from 'react-native-svg';
 
 function RobotIcon({ width, height }) {
   return (

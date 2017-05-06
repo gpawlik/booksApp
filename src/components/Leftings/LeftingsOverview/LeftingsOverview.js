@@ -1,21 +1,24 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
-import Button from 'react-native-button';
 
 import LeftingsList from 'common/components/LeftingsList/LeftingsList';
 import LeftingsMap from 'common/components/LeftingsMap/LeftingsMap';
 import Preloader from 'common/components/Preloader/Preloader';
-import s from './styles';
+import EmptyView from 'common/components/EmptyView';
 
-const LeftingsOverview = ({ leftings, state, isLoading, toggleView }) => {
+const LeftingsOverview = ({ leftings, state, isLoading, isEmpty, toggleView }) => {
   const ViewHandler = state === 'map' ? LeftingsMap : LeftingsList;
 
   return (
     <View>
-      <ViewHandler
-        leftings={leftings}
+      {!isEmpty && <ViewHandler leftings={leftings} />}
+      <Preloader
+        isLoading={isLoading}
         />
-      {isLoading && <Preloader />}
+      <EmptyView
+        isVisible={isEmpty}
+        text="No results found..."
+        />
     </View>
   );
 };
@@ -36,6 +39,7 @@ LeftingsOverview.propTypes = {
   leftings: PropTypes.object.isRequired,
   state: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  isEmpty: PropTypes.bool.isRequired,
   toggleView: PropTypes.func.isRequired
 };
 
