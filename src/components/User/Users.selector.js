@@ -7,6 +7,16 @@ export const selectUser = () => createSelector(
   usersState => usersState.get('user').toJS()
 );
 
+export const selectUserInfo = () => createSelector(
+  selectUsersStore(),
+  usersState => usersState.getIn(['user', 'info']).toJS()
+);
+
+export const selectUserLocation = () => createSelector(
+  selectUsersStore(),
+  usersState => usersState.getIn(['user', 'location']).toJS()
+);
+
 export const selectUserId = () => createSelector(
   selectUsersStore(),
   usersState => usersState.getIn(['user', 'id'])

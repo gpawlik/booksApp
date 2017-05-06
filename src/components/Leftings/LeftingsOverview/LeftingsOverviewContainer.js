@@ -5,6 +5,9 @@ import { ListView } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 
 import {
+  setUserLocation
+} from 'components/User/Users.actions';
+import {
   fetchLeftings,
   changeView
 } from './../Leftings.actions';
@@ -15,6 +18,7 @@ import {
 } from 'components/Leftings/Leftings.selector';
 import LeftingsOverview from './LeftingsOverview';
 import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
+import { getGeolocation } from 'utils/geolocation';
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
@@ -37,9 +41,17 @@ class LeftingsOverviewContainer extends Component {
   }
 
   componentDidMount() {
-    const { onFetchLeftings } = this.props;
+    const { onFetchLeftings, onSetUserLocation } = this.props;
 
     onFetchLeftings();
+
+    getGeolocation()
+      .then(({ coords }) => {
+        onSetUserLocation({
+          longitude: coords.longitude,
+          latitude: coords.latitude
+        });
+      });
   }
 
   toggleView() {
@@ -82,6 +94,9 @@ const mapDispatchToProps = dispatch => {
     },
     onChangeView: view => {
       dispatch(changeView(view));
+    },
+    onSetUserLocation: position => {
+      dispatch(setUserLocation(position));
     }
   };
 };

@@ -8,9 +8,11 @@ import UserProfile from './UserProfile';
 
 import Preloader from 'common/components/Preloader/Preloader';
 import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
-import { fetchUser } from 'components/User/Users.actions';
 import {
-  selectUser,
+  fetchUser
+} from 'components/User/Users.actions';
+import {
+  selectUserInfo,
   selectIsLoading
 } from 'components/User/Users.selector';
 import {
@@ -21,6 +23,11 @@ import {
 class UserProfileContainer extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      initialPosition: 'unknown',
+      lastPosition: 'unknown'
+    };
   }
 
   componentDidMount() {
@@ -53,14 +60,14 @@ class UserProfileContainer extends React.Component {
         <UserProfile
           user={user}
           />
-        {this.props.isLoading && <Preloader />}
+        <Preloader isLoading={this.props.isLoading} />
       </View>
     );
   }
 }
 
 const mapStateToProps = createStructuredSelector({
-  user: selectUser(),
+  user: selectUserInfo(),
   authUser: selectAuthUser(),
   isAuthenticated: selectIsAuthenticated(),
   isLoading: selectIsLoading()

@@ -9,11 +9,11 @@ import translate from 'utils/translate';
 import s from './styles';
 
 const UserProfile = ({ user, isCurrent }) => {
-  const { _id, firstName, lastName, location, createdAt } = user;
+  const { _id, firstName, lastName, createdAt } = user;
   const timeCreated = moment(createdAt).fromNow();
 
   const locationField = (
-    <Text style={s.profileMetaTitle}>{location}</Text>
+    <Text style={s.profileMetaTitle}>location</Text>
   );
   const createdField = (
     <View>
@@ -41,7 +41,7 @@ const UserProfile = ({ user, isCurrent }) => {
       </View>
       <View style={s.profileContent}>
         <Text style={s.profileTitle}>{`${firstName} ${lastName}`}</Text>
-        {location && locationField}
+        {locationField}
         {createdField}
         {editProfileButton}
         <View style={s.profileSection}>

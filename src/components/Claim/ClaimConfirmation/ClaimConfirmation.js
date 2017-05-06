@@ -6,7 +6,7 @@ import GoogleMap from 'react-native-google-static-map';
 
 import s from './styles';
 
-const ClaimConfirmation = ({ claim, book, onSubmit }) => {
+const ClaimConfirmation = ({ claim, book, location, onSubmit }) => {
   return (
     <ScrollView style={s.container}>
       <View style={s.section}>
@@ -30,8 +30,8 @@ const ClaimConfirmation = ({ claim, book, onSubmit }) => {
         </Text>
         <GoogleMap
           style={s.map}
-          latitude={'32.064171'}
-          longitude={'34.7748068'}
+          latitude={`${location.latitude}`}
+          longitude={`${location.longitude}`}
           zoom={13}
           size={{ width: 380, height: 120 }}
         />
@@ -72,6 +72,7 @@ const ClaimConfirmation = ({ claim, book, onSubmit }) => {
 ClaimConfirmation.propTypes = {
   claim: PropTypes.object.isRequired,
   book: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired
 };
 

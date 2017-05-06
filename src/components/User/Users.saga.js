@@ -9,10 +9,7 @@ import {
   transformUpdateData,
   parseUpdateData
 } from './Users.model';
-import {
-  GET_USER_PROFILE_REQUEST,
-  EDIT_USER_PROFILE_REQUEST
-} from './Users.actionTypes';
+import { actionTypes as at } from './Users.constants';
 import {
   fetchSuccess,
   fetchFailure,
@@ -51,6 +48,6 @@ export function* updateUser() {
 }
 
 export function* userWatcher() {
-  yield fork(takeLatest, GET_USER_PROFILE_REQUEST, fetchUser);
-  yield fork(takeLatest, EDIT_USER_PROFILE_REQUEST, updateUser);
+  yield fork(takeLatest, at.USER_GET_PROFILE, fetchUser);
+  yield fork(takeLatest, at.USER_EDIT_PROFILE, updateUser);
 }

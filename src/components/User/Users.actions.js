@@ -1,31 +1,21 @@
-import {
-  SET_CURRENT_USER,
-  UNSET_CURRENT_USER,
-  EDIT_SETTINGS_FORM,
-  GET_USER_PROFILE_REQUEST,
-  GET_USER_PROFILE_SUCCESS,
-  GET_USER_PROFILE_FAILURE,
-  EDIT_USER_PROFILE_REQUEST,
-  EDIT_USER_PROFILE_SUCCESS,
-  EDIT_USER_PROFILE_FAILURE
-} from './Users.actionTypes';
+import { actionTypes as at } from './Users.constants';
 
 export const setCurrentUser = user => {
   return {
-    type: SET_CURRENT_USER,
+    type: at.USER_SET_CURRENT,
     user
   };
 };
 
 export const unsetCurrentUser = () => {
   return {
-    type: UNSET_CURRENT_USER
+    type: at.USER_UNSET_CURRENT
   };
 };
 
 export const editSettings = ({ id, value }) => {
   return {
-    type: EDIT_SETTINGS_FORM,
+    type: at.USER_EDIT_SETTINGS_FORM,
     id,
     value
   };
@@ -33,40 +23,47 @@ export const editSettings = ({ id, value }) => {
 
 export const updateUserProfile = () => {
   return {
-    type: EDIT_USER_PROFILE_REQUEST
+    type: at.USER_EDIT_PROFILE
   };
 };
 
 export const fetchUser = user => {
   return {
-    type: GET_USER_PROFILE_REQUEST,
+    type: at.USER_GET_PROFILE,
     user
   };
 };
 
 export const fetchSuccess = user => {
   return {
-    type: GET_USER_PROFILE_SUCCESS,
+    type: at.USER_GET_PROFILE_SUCCESS,
     user
   };
 };
 
 export const fetchFailure = error => {
   return {
-    type: GET_USER_PROFILE_FAILURE,
+    type: at.USER_GET_PROFILE_FAILURE,
     error
   };
 };
 
 export const updateSuccess = user => {
   return {
-    type: EDIT_USER_PROFILE_SUCCESS,
+    type: at.USER_EDIT_PROFILE_SUCCESS,
     user
   };
 };
 
 export const updateFailure = () => {
   return {
-    type: EDIT_USER_PROFILE_FAILURE
+    type: at.USER_EDIT_PROFILE_FAILURE
+  };
+};
+
+export const setUserLocation = location => {
+  return {
+    type: at.USER_SET_LOCATION,
+    location
   };
 };

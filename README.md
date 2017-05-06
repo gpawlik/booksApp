@@ -61,6 +61,9 @@ https://github.com/airbnb/react-native-maps/pull/1224/commits
 1) error: ENOENT no such file or directory, uv_chdir
 solution: react-native upgrade
 
+2) Enable geolocation on Android (on iOS is enabled by default):
+AndroidManifest.xml: <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 # Linked libraries
 - react-native-svg
 - react-native-maps
