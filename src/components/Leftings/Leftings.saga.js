@@ -11,10 +11,15 @@ import {
   fetchLeftingsSingleSuccess,
   fetchLeftingsSingleFailure
 } from './Leftings.actions';
+import {
+  transformLeftingsData,
+  transformLeftingsSingleData
+} from './Leftings.model';
 
 export function* fetchLeftings() {
   try {
-    const data = yield call(fetch);
+    const results = yield call(fetch);
+    const data = transformLeftingsData(results);
 
     yield put(fetchLeftingsSuccess(data));
   } catch (err) {
@@ -24,7 +29,8 @@ export function* fetchLeftings() {
 
 export function* fetchLeftingsSingle({ id }) {
   try {
-    const data = yield call(fetchSingle, id);
+    const result = yield call(fetchSingle, id);
+    const data = transformLeftingsSingleData(result);
 
     yield put(fetchLeftingsSingleSuccess(data));
   } catch (err) {

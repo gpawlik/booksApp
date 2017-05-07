@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
 import s from './styles';
 
 const BookMeta = ({ imageUrl, publisher, publishDate, pages, type, isbn }) => {
   return (
     <View style={s.container}>
-      <View style={s.image}></View>
+      <Image
+        source={{uri: imageUrl}}
+        style={s.image}
+        />
       <View>
         <Text style={s.info}>
           <Text style={s.infoLabel}>Publisher:</Text> <Text style={s.infoText}>{publisher}</Text>
@@ -32,7 +35,7 @@ const BookMeta = ({ imageUrl, publisher, publishDate, pages, type, isbn }) => {
 BookMeta.propTypes = {
   imageUrl: PropTypes.string,
   publisher: PropTypes.string,
-  publishDate: PropTypes.string,
+  publishDate: PropTypes.number,
   pages: PropTypes.number,
   type: PropTypes.string,
   isbn: PropTypes.string

@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
       return state
         .set('message', initialState);
     case atl.LEFTINGS_FETCH_FAILURE:
-    case atl.LEFTING_FETCH_FAILURE:
+    case atl.LEFTINGS_FETCH_SINGLE_FAILURE:
       return state
         .set('message', fromJS({
           type: 'error',

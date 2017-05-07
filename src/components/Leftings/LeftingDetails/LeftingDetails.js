@@ -8,16 +8,28 @@ import Rating from 'common/components/Rating/Rating';
 import BookMeta from 'common/components/BookMeta/BookMeta';
 import s from './styles';
 
-const LeftingDetails = ({ lefting, onCheckout }) => {
-  // TODO: if no lefting data, redirect to error page
-  const { book, description, leftingDate, createdAt } = lefting;
-  const leftingDateFormatted = moment(leftingDate).format('DD/MM/YYYY');
+const LeftingDetails = ({ lefting, distance, onCheckout }) => {
+  const {
+    book = {},
+    pictureUrl,
+    createdAt
+  } = lefting;
+  const {
+    title: bookTitle,
+    author: bookAuthor,
+    imageUrl: bookImageUrl,
+    publishDate,
+    rating,
+    ISBN
+  } = book;
+  //const leftingDateFormatted = moment(createdAt).format('DD/MM/YYYY');
   const timeCreated = moment(createdAt).fromNow();
-  const pictureUrl = book ? book.pictureUrl : false;
+  //const distance = getDistance(userLocation, location);
+  //const distance = {};
 
   return (
     <ScrollView>
-      {pictureUrl && <Image style={s.picture} source={{uri: pictureUrl }} />}
+      {pictureUrl && <Image style={s.picture} source={{ uri: pictureUrl }} />}
 
       <View style={s.actionBox}>
         <Button
@@ -37,22 +49,22 @@ const LeftingDetails = ({ lefting, onCheckout }) => {
       </View>
 
       <View style={s.headerBox}>
-        <Text style={s.headerTitle}>El millor dels mons</Text>
-        <Text style={s.headerAuthor}>Quim Monzó</Text>
+        <Text style={s.headerTitle}>{bookTitle}</Text>
+        <Text style={s.headerAuthor}>{bookAuthor}</Text>
       </View>
 
       <View style={s.metaBox}>
         <View style={s.metaItem}>
           <Text style={s.metaLabel}>Distance</Text>
-          <Text style={s.metaDataShort}>{'1.4km'}</Text>
+          <Text style={s.metaDataShort}>{`${distance}km`}</Text>
         </View>
         <View style={s.metaItem}>
           <Text style={s.metaLabel}>Rating</Text>
-          <Rating style={s.rating} stars={4.5} />
+          <Rating style={s.rating} stars={rating} />
         </View>
         <View style={s.metaItem}>
           <Text style={s.metaLabel}>Drop date</Text>
-          <Text style={s.metaDataLong}>7 days ago</Text>
+          <Text style={s.metaDataLong}>{timeCreated}</Text>
         </View>
         <View style={s.metaItemLast}>
           <Text style={s.metaLabel}>Swaps no.</Text>
@@ -70,12 +82,12 @@ const LeftingDetails = ({ lefting, onCheckout }) => {
 
       <View style={s.bookMetaBox}>
         <BookMeta
-          publishDate="20/08/1988"
+          imageUrl={bookImageUrl}
+          publishDate={publishDate}
           publisher="PenguinBooks"
           pages={178}
           type="Hardcover"
-          isbn="8420471836"
-          isbn13="9788420471839"
+          isbn={ISBN}
           />
       </View>
     </ScrollView>
@@ -84,6 +96,10 @@ const LeftingDetails = ({ lefting, onCheckout }) => {
 
 LeftingDetails.propTypes = {
   lefting: PropTypes.object.isRequired,
+  distance: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   onCheckout: PropTypes.func.isRequired
 };
 

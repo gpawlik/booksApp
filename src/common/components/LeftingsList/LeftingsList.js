@@ -29,7 +29,7 @@ const LeftingsList = ({ leftings }) => {
                 style={s.item}>
                 <View>
                   <View style={s.pictureBox}>
-                    <Image style={s.picture} source={{uri: lefting.book.pictureUrl }} />
+                    <Image style={s.picture} source={{uri: lefting.pictureUrl }} />
                     <View style={s.itemInfoBox}>
                       <Text style={s.itemBookTitle}>{lefting.book.title.toUpperCase()}</Text>
                       <View style={s.itemBookAuthorBox}>
@@ -41,7 +41,7 @@ const LeftingsList = ({ leftings }) => {
                     <View style={s.itemIcon}></View>
                     <Text style={s.itemDate}>{'1.4km from you'}</Text>
                     <View style={s.infoSection}>
-                      <Rating stars={4.5} />
+                      <Rating stars={lefting.book.rating} />
                     </View>
                     <Button style={s.button}>show</Button>
                   </View>

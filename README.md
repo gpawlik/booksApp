@@ -82,7 +82,7 @@ https://gist.github.com/raldred/b08cf60712eb87d81f05437444dff4ae
 # TO-DOs
 * Client
 
-[ ] some messaging system
+[x] some messaging system
 [x] make connection work android
 [x] make maps work android
 [ ] setup map component with markers

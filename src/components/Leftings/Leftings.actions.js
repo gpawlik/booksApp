@@ -6,10 +6,10 @@ export const fetchLeftings = () => {
   };
 };
 
-export const fetchLeftingsSuccess = res => {
+export const fetchLeftingsSuccess = leftings => {
   return {
     type: at.LEFTINGS_FETCH_SUCCESS,
-    leftings: res.data
+    leftings
   };
 };
 
@@ -28,16 +28,17 @@ export const fetchLeftingsSingle = id => {
   };
 };
 
-export const fetchLeftingsSingleSuccess = res => {
+export const fetchLeftingsSingleSuccess = lefting => {
   return {
     type: at.LEFTINGS_FETCH_SINGLE_SUCCESS,
-    lefting: res.data
+    lefting
   };
 };
 
 export const fetchLeftingsSingleFailure = error => {
   return {
     type: at.LEFTINGS_FETCH_SINGLE_FAILURE,
+    message: 'Fetching single lefting failed',
     error
   };
 };

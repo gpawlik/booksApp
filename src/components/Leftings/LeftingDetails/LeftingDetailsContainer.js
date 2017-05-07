@@ -12,7 +12,11 @@ import {
   selectLefting,
   selectLeftingIsLoading
 } from 'components/Leftings/Leftings.selector';
-import NavBarMain from 'components/Navigation/NavBarMain/NavBarMain';
+import {
+  selectUserLocation
+} from 'components/User/Users.selector';
+import NavBarMainContainer from 'components/Navigation/NavBarMain/NavBarMainContainer';
+import { getDistance } from 'utils/geolocation';
 
 class LeftingDetailsContainer extends Component {
 
@@ -35,12 +39,15 @@ class LeftingDetailsContainer extends Component {
   }
 
   render() {
-    const { lefting, isLoading } = this.props;
+    const { lefting, userLocation, isLoading } = this.props;
+    const distance = getDistance(userLocation, lefting.location);
+    const bookDistance = distance && distance > 10 ? '>10' : distance;
 
     return (
       <View>
         <LeftingDetails
           lefting={lefting}
+          distance={bookDistance}
           onCheckout={this.onCheckout}
           />
         <Preloader isLoading={isLoading} />
@@ -51,7 +58,7 @@ class LeftingDetailsContainer extends Component {
 
 LeftingDetailsContainer.renderNavigationBar = ({ title }) => {
   return (
-    <NavBarMain
+    <NavBarMainContainer
       title={title}
       hasBackButton
       />
@@ -60,12 +67,13 @@ LeftingDetailsContainer.renderNavigationBar = ({ title }) => {
 
 const mapStateToProps = createStructuredSelector({
   lefting: selectLefting(),
-  isLoading: selectLeftingIsLoading()
+  isLoading: selectLeftingIsLoading(),
+  userLocation: selectUserLocation()
 });
 
 const mapDispatchToProps = dispatch => ({
-  onFetchLeftingsSingle: () => {
-    dispatch(fetchLeftingsSingle());
+  onFetchLeftingsSingle: id => {
+    dispatch(fetchLeftingsSingle(id));
   },
   onSetClaimBook: () => {
     dispatch(setClaimBook());
@@ -74,6 +82,7 @@ const mapDispatchToProps = dispatch => ({
 
 LeftingDetailsContainer.propTypes = {
   lefting: PropTypes.object.isRequired,
+  userLocation: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
   onFetchLeftingsSingle: PropTypes.func.isRequired,
   onSetClaimBook: PropTypes.func.isRequired

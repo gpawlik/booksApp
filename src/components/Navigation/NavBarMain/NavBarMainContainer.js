@@ -19,10 +19,8 @@ class NavBarMainContainer extends Component {
   }
 
   render() {
-    const { message } = this.props;
-
     return (
-      <NavBarMain message={message} />
+      <NavBarMain {...this.props} />
     );
   }
 }

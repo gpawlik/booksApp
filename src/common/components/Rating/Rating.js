@@ -8,11 +8,12 @@ import s from './styles';
 export default ({ stars, style }) => {
   const starsRating = items => {
     let result = [];
+    const fullStars = Math.round(items);
 
-    for(let i = 0; i < items; i++) {
+    for(let i = 0; i < fullStars; i++) {
       result.push(<StarIcon key={i} />);
     }
-    if(items % 1 > 0) {
+    if(items - fullStars > 0.25) {
       result.push(<StarHalfIcon key={Math.ceil(items)} />);
     }
     return result;

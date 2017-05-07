@@ -12,7 +12,7 @@ export const transformBookData = results => {
       author: best_book[0].author[0].name[0],
       imageUrl: best_book[0].small_image_url[0],
       publishDate: original_publication_year[0]._,
-      rating: average_rating[0],
+      rating: typeof average_rating[0] === 'string' ? average_rating[0] : '',
       selected
     };
   });
