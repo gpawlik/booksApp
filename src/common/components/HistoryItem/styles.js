@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import colors from 'config/colors';
+import { RED, GREEN } from 'config/colors';
 
 const timelineItem = {
   width: 45,
@@ -14,6 +14,18 @@ const timelineLine = {
   backgroundColor: '#dedede',
   position: 'absolute',
   left: timelineItem.width / 2 - timelineItem.traceWidth / 2
+};
+
+const picture = {
+  width: timelineItem.width,
+  height: timelineItem.width,
+  borderRadius: timelineItem.width / 2,
+  borderWidth: timelineItem.borderWidth,
+  position: 'absolute',
+  top: timelineItem.height / 2 - timelineItem.width / 2,
+  left: 0,
+  alignItems: 'center',
+  justifyContent: 'center'
 };
 
 export default StyleSheet.create({
@@ -40,16 +52,18 @@ export default StyleSheet.create({
     marginLeft: 10,
     marginRight: 10
   },
-  picture: {
-    backgroundColor: '#eee',
-    width: timelineItem.width,
-    height: timelineItem.width,
-    borderRadius: timelineItem.width / 2,
-    borderWidth: timelineItem.borderWidth,
-    borderColor: colors.primaryDark,
-    position: 'absolute',
-    top: timelineItem.height / 2 - timelineItem.width / 2,
-    left: 0
+  pictureCheckIn: {
+    ...picture,
+    backgroundColor: RED,
+    borderColor: RED
+  },
+  pictureCheckOut: {
+    ...picture,
+    backgroundColor: GREEN,
+    borderColor: GREEN
+  },
+  icon: {
+
   },
   timeline: {
     ...timelineLine,
