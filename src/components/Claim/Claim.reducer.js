@@ -5,9 +5,7 @@ import { actionTypes as at} from './Claim.constants';
 const initialState = fromJS({
   claim: {
     pictureUrl: '',
-    location: '41.222,2.054',
-    comment: 'Some amazing book',
-    bookId: '123456'
+    comment: ''
   },
   searchForm: {
     title: '',

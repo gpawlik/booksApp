@@ -43,6 +43,29 @@ export const fetchLeftingsSingleFailure = error => {
   };
 };
 
+export const createLefting = data => {
+  return {
+    type: at.LEFTINGS_CREATE,
+    data
+  };
+};
+
+export const createLeftingSuccess = lefting => {
+  return {
+    type: at.LEFTINGS_CREATE_SUCCESS,
+    message: 'Lefting created successfully',
+    lefting
+  };
+};
+
+export const createLeftingFailure = error => {
+  return {
+    type: at.LEFTINGS_CREATE_FAILURE,
+    message: 'Creating lefting failed',
+    error
+  };
+};
+
 export const changeView = view => {
   return {
     type: at.LEFTINGS_CHANGE_VIEW,

@@ -66,6 +66,8 @@ class LeftingsOverviewContainer extends Component {
     const { dataSource } = this.state;
     const isEmpty = !isLoading && !dataSource._cachedRowCount;
 
+    console.log('DS', dataSource);
+
     return (
       <LeftingsOverview
         leftings={dataSource}

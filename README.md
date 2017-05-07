@@ -93,7 +93,7 @@ https://gist.github.com/raldred/b08cf60712eb87d81f05437444dff4ae
 [x] sagas on leftings
 [ ] sagas on auth
 [x] sagas on claim
-[ ] correct data flow on leftings
+[x] correct data flow on leftings
 [ ] upload user picture
 [ ] empty views / fallback information
 [ ] load more results

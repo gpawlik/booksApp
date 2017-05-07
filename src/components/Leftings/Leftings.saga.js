@@ -1,15 +1,19 @@
 import { call, put, fork, takeLatest } from 'redux-saga/effects';
+import { Actions } from 'react-native-router-flux';
 
 import {
   fetch,
-  fetchSingle
+  fetchSingle,
+  create
 } from './Leftings.service';
 import { actionTypes as at } from './Leftings.constants';
 import {
   fetchLeftingsSuccess,
   fetchLeftingsFailure,
   fetchLeftingsSingleSuccess,
-  fetchLeftingsSingleFailure
+  fetchLeftingsSingleFailure,
+  createLeftingSuccess,
+  createLeftingFailure
 } from './Leftings.actions';
 import {
   transformLeftingsData,
@@ -38,7 +42,19 @@ export function* fetchLeftingsSingle({ id }) {
   }
 }
 
+export function* createLefting({ data }) {
+  try {
+    const result = yield call(create, data);
+
+    yield put(createLeftingSuccess(result));
+    Actions.leftings();
+  } catch (err) {
+    yield put(createLeftingFailure(err));
+  }
+}
+
 export function* leftingsWatcher() {
   yield fork(takeLatest, at.LEFTINGS_FETCH, fetchLeftings);
   yield fork(takeLatest, at.LEFTINGS_FETCH_SINGLE, fetchLeftingsSingle);
+  yield fork(takeLatest, at.LEFTINGS_CREATE, createLefting);
 }

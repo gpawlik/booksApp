@@ -75,6 +75,7 @@ export default StyleSheet.create({
   },
   metaLabel: {
     fontSize: 10,
+    marginBottom: 3,
     color: '#aeaeae'
   },
   metaDataShort: {
@@ -83,7 +84,9 @@ export default StyleSheet.create({
   },
   metaDataLong: {
     fontSize: 12,
-    color: '#999'
+    lineHeight: 12,
+    color: '#999',
+    textAlign: 'center'
   },
   rating: {
     marginTop: 4

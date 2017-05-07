@@ -8,6 +8,7 @@ export const transformBookData = results => {
     selected
   }) => {
     return {
+      bookId: best_book[0].id[0]._,
       title: best_book[0].title[0],
       author: best_book[0].author[0].name[0],
       imageUrl: best_book[0].small_image_url[0],

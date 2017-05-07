@@ -18,9 +18,10 @@ class ClaimConfirmationContainer extends React.Component {
   }
 
   onSubmit() {
-    const { claim, onCreateLefting } = this.props;
+    const { claim, book, location, onCreateLefting } = this.props;
 
-    onCreateLefting(claim)
+    onCreateLefting({ claim, book, location });
+    /*
       .then(() => {
         Actions.leftings();
       })
@@ -29,7 +30,7 @@ class ClaimConfirmationContainer extends React.Component {
           errors: err.response.data,
           isFormLoading: false
         });
-      });
+      });*/
   }
 
   render() {
@@ -63,8 +64,8 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => {
   return {
-    onCreateLefting: () => {
-      dispatch(createLefting());
+    onCreateLefting: data => {
+      dispatch(createLefting(data));
     }
   };
 };
