@@ -21,7 +21,7 @@
     "react-native-drawer": "^2.3.0",
     "react-native-google-static-map": "^0.1.8",
     "react-native-router-flux": "3.38.0",
-    "react-native-svg": "^5.1.7",
+    "react-native-svg": "5.1.7",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",
     "redux-saga": "^0.15.0",

@@ -1,15 +1,27 @@
-# Routing
+# BooksFinder
 
-For routing using https://github.com/aksonov/react-native-router-flux
+Have you ever heard of the concept of book swapping? This app allow you to both easily share the details and location of your book, and to search for the books left by others.
 
-# Other libraries:
+## Installation
 
-- react-native-button (TO ELIMINATE)
+```
+yarn
+react-native run-ios
+```
+
+## Demo
+
+<img src="demo.gif" title="BooksFinder App Demo" />
+
+### Libraries
+
+- react-native-router-flux
+- react-native-button
 - react-native-drawer - drawer navigation fly-out
-- validator - more complex validation functions (TO ELIMINATE)
-- axios - XHR requests (maybe substitute with sth native)
+- validator - more complex validation functions
+- axios - XHR requests
 - jwt-decode (JWT token manipulation)
-- lodash (TO ELIMINATE)
+- lodash
 - xml2js (parse xml string)
 
 DEV:
