@@ -9,10 +9,6 @@ yarn
 react-native run-ios
 ```
 
-## Demo
-
-<img src="demo.gif" title="BooksFinder App Demo" />
-
 ### Libraries
 
 - react-native-router-flux
